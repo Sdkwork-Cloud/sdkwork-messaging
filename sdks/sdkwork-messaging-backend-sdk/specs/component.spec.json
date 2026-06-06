@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "name": "sdkwork-messaging-backend-sdk",
+  "type": "sdk-family",
+  "domain": "messaging",
+  "apiAuthority": "sdkwork-messaging-backend-api",
+  "apiPrefix": "/backend/v3/api",
+  "sdkType": "backend",
+  "languages": [
+    "typescript"
+  ],
+  "generator": {
+    "package": "@sdkwork/sdk-generator",
+    "entrypoint": "D:\\javasource\\spring-ai-plus\\sdk\\sdkwork-sdk-generator\\bin\\sdkgen.js",
+    "standardProfile": "sdkwork-v3"
+  },
+  "contracts": {
+    "sdkDependencies": []
+  },
+  "auth": {
+    "mode": "dual-token",
+    "requestIdOwnership": "server"
+  }
+}

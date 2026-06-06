@@ -1,0 +1,41 @@
+{
+  "name": "@sdkwork/messaging-workspace",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "packageManager": "pnpm@10.30.3",
+  "scripts": {
+    "test": "vitest run",
+    "test:migration": "node tests/messaging-migration-contract.test.mjs",
+    "test:messaging-contracts": "vitest run packages/common/messaging/sdkwork-messaging-contracts/tests",
+    "test:messaging-runtime": "vitest run packages/common/messaging/sdkwork-messaging-runtime/tests",
+    "test:governance": "node scripts/messaging-governance.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "sdk:materialize": "node sdks/materialize-messaging-v3-openapi-boundaries.mjs",
+    "sdk:generate:app": "powershell -ExecutionPolicy Bypass -File sdks/sdkwork-messaging-app-sdk/bin/generate-sdk.ps1",
+    "sdk:generate:backend": "powershell -ExecutionPolicy Bypass -File sdks/sdkwork-messaging-backend-sdk/bin/generate-sdk.ps1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "rollup": "^4.0.0",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.2"
+  },
+  "dependencies": {
+    "@sdkwork/sdk-common": "^1.0.2"
+  },
+  "peerDependencies": {
+    "react": ">=18.2.0 <20.0.0",
+    "react-dom": ">=18.2.0 <20.0.0"
+  },
+  "sdkwork": {
+    "owner": "sdkwork-messaging",
+    "domain": "messaging",
+    "apiAuthorities": [
+      "sdkwork-messaging-app-api",
+      "sdkwork-messaging-backend-api"
+    ]
+  }
+}

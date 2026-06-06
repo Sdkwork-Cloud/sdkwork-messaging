@@ -1,0 +1,5 @@
+packages:
+  - "packages/common/*/*"
+  - "packages/native-rust/*/*"
+  - "packages/native-rust/routes/*/*"
+  - "sdks/*"

@@ -1,0 +1,335 @@
+CREATE TABLE IF NOT EXISTS messaging_notification (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    notification_key VARCHAR(192) NOT NULL,
+    category VARCHAR(64) NOT NULL DEFAULT 'general',
+    priority VARCHAR(32) NOT NULL DEFAULT 'normal',
+    title VARCHAR(256) NOT NULL,
+    body TEXT NOT NULL,
+    action_url VARCHAR(1024),
+    payload_json JSONB NOT NULL DEFAULT '{}'::jsonb,
+    idempotency_key VARCHAR(256) NOT NULL,
+    payload_hash VARCHAR(128) NOT NULL,
+    created_by BIGINT,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0,
+    deleted_at TIMESTAMPTZ,
+    deleted_by BIGINT,
+    CONSTRAINT ck_messaging_notification_priority CHECK (priority IN ('low', 'normal', 'high', 'urgent')),
+    CONSTRAINT uk_messaging_notification_idempotency UNIQUE (tenant_id, organization_id, idempotency_key),
+    CONSTRAINT uk_messaging_notification_key UNIQUE (tenant_id, organization_id, notification_key)
+);
+
+CREATE TABLE IF NOT EXISTS messaging_notification_recipient (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    notification_id BIGINT NOT NULL,
+    recipient_user_id BIGINT NOT NULL,
+    recipient_type VARCHAR(32) NOT NULL DEFAULT 'user',
+    status VARCHAR(32) NOT NULL DEFAULT 'unread',
+    delivered_at TIMESTAMPTZ,
+    read_at TIMESTAMPTZ,
+    archived_at TIMESTAMPTZ,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0,
+    CONSTRAINT ck_messaging_notification_recipient_status CHECK (status IN ('unread', 'read', 'archived')),
+    CONSTRAINT fk_messaging_notification_recipient_notification FOREIGN KEY (notification_id) REFERENCES messaging_notification(id),
+    CONSTRAINT uk_messaging_notification_recipient UNIQUE (tenant_id, organization_id, notification_id, recipient_user_id)
+);
+
+CREATE TABLE IF NOT EXISTS messaging_announcement (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    announcement_key VARCHAR(192) NOT NULL,
+    title VARCHAR(256) NOT NULL,
+    body TEXT NOT NULL,
+    severity VARCHAR(32) NOT NULL DEFAULT 'info',
+    status VARCHAR(32) NOT NULL DEFAULT 'draft',
+    publish_at TIMESTAMPTZ,
+    expire_at TIMESTAMPTZ,
+    require_ack BOOLEAN NOT NULL DEFAULT FALSE,
+    payload_json JSONB NOT NULL DEFAULT '{}'::jsonb,
+    idempotency_key VARCHAR(256) NOT NULL,
+    payload_hash VARCHAR(128) NOT NULL,
+    created_by BIGINT,
+    published_by BIGINT,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0,
+    deleted_at TIMESTAMPTZ,
+    deleted_by BIGINT,
+    CONSTRAINT ck_messaging_announcement_status CHECK (status IN ('draft', 'scheduled', 'published', 'expired', 'cancelled')),
+    CONSTRAINT ck_messaging_announcement_window CHECK (expire_at IS NULL OR publish_at IS NULL OR expire_at > publish_at),
+    CONSTRAINT uk_messaging_announcement_idempotency UNIQUE (tenant_id, organization_id, idempotency_key),
+    CONSTRAINT uk_messaging_announcement_key UNIQUE (tenant_id, organization_id, announcement_key)
+);
+
+CREATE TABLE IF NOT EXISTS messaging_announcement_audience (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    announcement_id BIGINT NOT NULL,
+    audience_kind VARCHAR(32) NOT NULL,
+    audience_value VARCHAR(256) NOT NULL DEFAULT '*',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0,
+    CONSTRAINT ck_messaging_announcement_audience_kind CHECK (audience_kind IN ('all_users', 'tenant', 'organization', 'role', 'user_segment', 'explicit_users')),
+    CONSTRAINT fk_messaging_announcement_audience_announcement FOREIGN KEY (announcement_id) REFERENCES messaging_announcement(id),
+    CONSTRAINT uk_messaging_announcement_audience UNIQUE (tenant_id, organization_id, announcement_id, audience_kind, audience_value)
+);
+
+CREATE TABLE IF NOT EXISTS messaging_announcement_receipt (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    announcement_id BIGINT NOT NULL,
+    recipient_user_id BIGINT NOT NULL,
+    seen_at TIMESTAMPTZ,
+    acknowledged_at TIMESTAMPTZ,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0,
+    CONSTRAINT fk_messaging_announcement_receipt_announcement FOREIGN KEY (announcement_id) REFERENCES messaging_announcement(id),
+    CONSTRAINT uk_messaging_announcement_receipt UNIQUE (tenant_id, organization_id, announcement_id, recipient_user_id)
+);
+
+CREATE TABLE IF NOT EXISTS messaging_push_device (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    user_id BIGINT NOT NULL,
+    device_key VARCHAR(192) NOT NULL,
+    platform VARCHAR(32) NOT NULL,
+    provider VARCHAR(64) NOT NULL,
+    token_hash VARCHAR(256) NOT NULL,
+    token_cipher TEXT NOT NULL,
+    app_version VARCHAR(64),
+    locale VARCHAR(32),
+    timezone VARCHAR(64),
+    enabled BOOLEAN NOT NULL DEFAULT TRUE,
+    last_seen_at TIMESTAMPTZ,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0,
+    deleted_at TIMESTAMPTZ,
+    deleted_by BIGINT,
+    CONSTRAINT ck_messaging_push_device_platform CHECK (platform IN ('ios', 'android', 'web')),
+    CONSTRAINT uk_messaging_push_device_key UNIQUE (tenant_id, organization_id, user_id, device_key)
+);
+
+CREATE TABLE IF NOT EXISTS messaging_push_message (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    push_key VARCHAR(192) NOT NULL,
+    title VARCHAR(256) NOT NULL,
+    body TEXT NOT NULL,
+    badge INTEGER,
+    collapse_key VARCHAR(128),
+    data_json JSONB NOT NULL DEFAULT '{}'::jsonb,
+    idempotency_key VARCHAR(256) NOT NULL,
+    payload_hash VARCHAR(128) NOT NULL,
+    status VARCHAR(32) NOT NULL DEFAULT 'accepted',
+    scheduled_at TIMESTAMPTZ,
+    created_by BIGINT,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0,
+    CONSTRAINT ck_messaging_push_message_badge_non_negative CHECK (badge IS NULL OR badge >= 0),
+    CONSTRAINT ck_messaging_push_message_status CHECK (status IN ('accepted', 'queued', 'sent', 'delivered', 'failed', 'opened', 'cancelled', 'expired')),
+    CONSTRAINT uk_messaging_push_message_key UNIQUE (tenant_id, organization_id, push_key),
+    CONSTRAINT uk_messaging_push_message_idempotency UNIQUE (tenant_id, organization_id, idempotency_key)
+);
+
+CREATE TABLE IF NOT EXISTS messaging_push_delivery (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    push_message_id BIGINT NOT NULL,
+    push_device_id BIGINT NOT NULL,
+    user_id BIGINT NOT NULL,
+    provider VARCHAR(64) NOT NULL,
+    provider_message_id VARCHAR(256),
+    status VARCHAR(32) NOT NULL DEFAULT 'queued',
+    error_code VARCHAR(128),
+    error_message TEXT,
+    queued_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    sent_at TIMESTAMPTZ,
+    delivered_at TIMESTAMPTZ,
+    opened_at TIMESTAMPTZ,
+    failed_at TIMESTAMPTZ,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0,
+    CONSTRAINT ck_messaging_push_delivery_status CHECK (status IN ('accepted', 'queued', 'sent', 'delivered', 'failed', 'opened', 'cancelled', 'expired')),
+    CONSTRAINT fk_messaging_push_delivery_message FOREIGN KEY (push_message_id) REFERENCES messaging_push_message(id),
+    CONSTRAINT fk_messaging_push_delivery_device FOREIGN KEY (push_device_id) REFERENCES messaging_push_device(id),
+    CONSTRAINT uk_messaging_push_delivery UNIQUE (tenant_id, organization_id, push_message_id, push_device_id)
+);
+
+CREATE TABLE IF NOT EXISTS messaging_outbound_message (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    message_key VARCHAR(192) NOT NULL,
+    channel VARCHAR(32) NOT NULL,
+    target_hash VARCHAR(256) NOT NULL,
+    target_masked VARCHAR(256) NOT NULL,
+    subject TEXT,
+    body TEXT NOT NULL,
+    payload_json JSONB NOT NULL DEFAULT '{}'::jsonb,
+    idempotency_key VARCHAR(256) NOT NULL,
+    payload_hash VARCHAR(128) NOT NULL,
+    status VARCHAR(32) NOT NULL DEFAULT 'accepted',
+    created_by BIGINT,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0,
+    CONSTRAINT ck_messaging_outbound_message_channel CHECK (channel IN ('sms', 'email')),
+    CONSTRAINT ck_messaging_outbound_message_status CHECK (status IN ('accepted', 'queued', 'sent', 'delivered', 'failed', 'opened', 'cancelled', 'expired')),
+    CONSTRAINT uk_messaging_outbound_message_key UNIQUE (tenant_id, organization_id, message_key),
+    CONSTRAINT uk_messaging_outbound_message_idempotency UNIQUE (tenant_id, organization_id, idempotency_key)
+);
+
+CREATE TABLE IF NOT EXISTS messaging_outbound_delivery (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    outbound_message_id BIGINT NOT NULL,
+    channel VARCHAR(32) NOT NULL,
+    provider VARCHAR(64),
+    provider_message_id VARCHAR(256),
+    status VARCHAR(32) NOT NULL DEFAULT 'queued',
+    error_code VARCHAR(128),
+    error_message TEXT,
+    sent_at TIMESTAMPTZ,
+    delivered_at TIMESTAMPTZ,
+    failed_at TIMESTAMPTZ,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0,
+    CONSTRAINT ck_messaging_outbound_delivery_channel CHECK (channel IN ('sms', 'email')),
+    CONSTRAINT ck_messaging_outbound_delivery_status CHECK (status IN ('accepted', 'queued', 'sent', 'delivered', 'failed', 'opened', 'cancelled', 'expired')),
+    CONSTRAINT fk_messaging_outbound_delivery_message FOREIGN KEY (outbound_message_id) REFERENCES messaging_outbound_message(id)
+);
+
+CREATE TABLE IF NOT EXISTS messaging_verification_policy (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    scene_code VARCHAR(160) NOT NULL,
+    channel VARCHAR(32) NOT NULL,
+    ttl_seconds INTEGER NOT NULL DEFAULT 300,
+    max_attempts INTEGER NOT NULL DEFAULT 5,
+    message_subject TEXT,
+    message_body_pattern TEXT NOT NULL,
+    enabled BOOLEAN NOT NULL DEFAULT TRUE,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0,
+    CONSTRAINT ck_messaging_verification_policy_channel CHECK (channel IN ('sms', 'email')),
+    CONSTRAINT ck_messaging_verification_policy_ttl_positive CHECK (ttl_seconds > 0),
+    CONSTRAINT ck_messaging_verification_policy_max_attempts_positive CHECK (max_attempts > 0),
+    CONSTRAINT uk_messaging_verification_policy UNIQUE (tenant_id, organization_id, scene_code, channel)
+);
+
+CREATE TABLE IF NOT EXISTS messaging_verification_challenge (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    scene_code VARCHAR(160) NOT NULL,
+    channel VARCHAR(32) NOT NULL,
+    target_hash VARCHAR(256) NOT NULL,
+    target_masked VARCHAR(256) NOT NULL,
+    code_hash VARCHAR(256) NOT NULL,
+    status VARCHAR(32) NOT NULL DEFAULT 'pending',
+    attempt_count INTEGER NOT NULL DEFAULT 0,
+    idempotency_key VARCHAR(256) NOT NULL,
+    expires_at TIMESTAMPTZ NOT NULL,
+    verified_at TIMESTAMPTZ,
+    locked_at TIMESTAMPTZ,
+    expired_at TIMESTAMPTZ,
+    outbound_message_id BIGINT,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    version BIGINT NOT NULL DEFAULT 0,
+    CONSTRAINT ck_messaging_verification_challenge_channel CHECK (channel IN ('sms', 'email')),
+    CONSTRAINT ck_messaging_verification_challenge_status CHECK (status IN ('pending', 'verified', 'failed', 'locked', 'expired')),
+    CONSTRAINT ck_messaging_verification_attempt_count_non_negative CHECK (attempt_count >= 0),
+    CONSTRAINT ck_messaging_verification_challenge_terminal_timestamps CHECK (
+        (status <> 'verified' OR verified_at IS NOT NULL)
+        AND (status <> 'locked' OR locked_at IS NOT NULL)
+        AND (status <> 'expired' OR expired_at IS NOT NULL)
+    ),
+    CONSTRAINT fk_messaging_verification_challenge_policy FOREIGN KEY (tenant_id, organization_id, scene_code, channel) REFERENCES messaging_verification_policy(tenant_id, organization_id, scene_code, channel),
+    CONSTRAINT fk_messaging_verification_challenge_outbound_message FOREIGN KEY (outbound_message_id) REFERENCES messaging_outbound_message(id),
+    CONSTRAINT uk_messaging_verification_challenge_idempotency UNIQUE (tenant_id, organization_id, idempotency_key)
+);
+
+CREATE TABLE IF NOT EXISTS messaging_verification_attempt (
+    id BIGINT PRIMARY KEY,
+    uuid VARCHAR(64) NOT NULL UNIQUE,
+    tenant_id BIGINT NOT NULL DEFAULT 0,
+    organization_id BIGINT NOT NULL DEFAULT 0,
+    challenge_id BIGINT NOT NULL,
+    idempotency_key VARCHAR(256) NOT NULL,
+    success BOOLEAN NOT NULL DEFAULT FALSE,
+    failure_reason VARCHAR(128),
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_messaging_verification_attempt_challenge FOREIGN KEY (challenge_id) REFERENCES messaging_verification_challenge(id),
+    CONSTRAINT uk_messaging_verification_attempt_idempotency UNIQUE (tenant_id, organization_id, challenge_id, idempotency_key)
+);
+
+CREATE INDEX IF NOT EXISTS idx_messaging_notification_recipient_inbox
+    ON messaging_notification_recipient (tenant_id, organization_id, recipient_user_id, status, created_at);
+
+CREATE INDEX IF NOT EXISTS idx_messaging_notification_created
+    ON messaging_notification (tenant_id, organization_id, category, priority, created_at);
+
+CREATE INDEX IF NOT EXISTS idx_messaging_announcement_audience_publish
+    ON messaging_announcement_audience (tenant_id, organization_id, audience_kind, audience_value, announcement_id);
+
+CREATE INDEX IF NOT EXISTS idx_messaging_announcement_status_publish
+    ON messaging_announcement (tenant_id, organization_id, status, publish_at, expire_at);
+
+CREATE INDEX IF NOT EXISTS idx_messaging_announcement_receipt_user
+    ON messaging_announcement_receipt (tenant_id, organization_id, recipient_user_id, announcement_id, acknowledged_at);
+
+CREATE INDEX IF NOT EXISTS idx_messaging_push_device_user
+    ON messaging_push_device (tenant_id, organization_id, user_id, enabled, updated_at);
+
+CREATE INDEX IF NOT EXISTS idx_messaging_push_delivery_message_status
+    ON messaging_push_delivery (tenant_id, organization_id, push_message_id, status, updated_at);
+
+CREATE INDEX IF NOT EXISTS idx_messaging_push_delivery_user_status
+    ON messaging_push_delivery (tenant_id, organization_id, user_id, status, updated_at);
+
+CREATE INDEX IF NOT EXISTS idx_messaging_outbound_delivery_message_status
+    ON messaging_outbound_delivery (tenant_id, organization_id, outbound_message_id, status, updated_at);
+
+CREATE INDEX IF NOT EXISTS idx_messaging_outbound_message_channel_status
+    ON messaging_outbound_message (tenant_id, organization_id, channel, status, created_at);
+
+CREATE INDEX IF NOT EXISTS idx_messaging_verification_challenge_scene_target
+    ON messaging_verification_challenge (tenant_id, organization_id, scene_code, channel, target_hash, status, expires_at);
+
+CREATE INDEX IF NOT EXISTS idx_messaging_verification_challenge_expiry
+    ON messaging_verification_challenge (tenant_id, organization_id, status, expires_at);

@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "generator": "@sdkwork/sdk-generator",
+  "sdk": {
+    "name": "sdkwork-messaging-app-sdk",
+    "version": "1.0.0",
+    "language": "typescript",
+    "sdkType": "app",
+    "packageName": "@sdkwork/messaging-app-sdk"
+  },
+  "generatedFiles": [
+    {
+      "path": "bin/publish-core.mjs",
+      "sha256": "affb1f1b5400ac492e94e2d01f3104b8dd38b50329e371265d4f0945f2b0763c"
+    },
+    {
+      "path": "bin/publish.ps1",
+      "sha256": "78c6419400b988409d9393c2ecd85aa02dd6760f73edb3cc84cb28fefc51b41e"
+    },
+    {
+      "path": "bin/publish.sh",
+      "sha256": "899087c23e670b6951a12a13490fd557f761c96d78fabfb7e58a37e367db889f"
+    },
+    {
+      "path": "bin/sdk-gen.bat",
+      "sha256": "2d56891dc8276339ebbffc78ada3cc1bf73e2831453da89d95fcd2277bb4a05b"
+    },
+    {
+      "path": "bin/sdk-gen.sh",
+      "sha256": "c9bab3f87d5327833ca9a392f6b8e6b6d3386a46836cc3c48ef48313b603bd90"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "ecb55fcda2ed37d190a142ed7f8fe40ecc076276324fd22efd4fd15ab8610ee5"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "7840cc7d2b36ff364ac16c2fc5ec15b861bfe96854eecf81fb59b00edb8b1447"
+    },
+    {
+      "path": "package.json",
+      "sha256": "cd8d0905b60bc21aedb166c3511c6f9875c1d569c67df2bdd6eada082b32aad5"
+    },
+    {
+      "path": "README.md",
+      "sha256": "c7102d4c4071c65ea2f537380014bcb341905db7a287b2b3a9bd51b0f8d13f3e"
+    },
+    {
+      "path": "sdkwork-sdk.json",
+      "sha256": "90753b244e092acb24353010ebc5ae2e3b68f2868e2499a86fe1f07a3349fc32"
+    },
+    {
+      "path": "src/api/base.ts",
+      "sha256": "02ad25e6bf331ff241ba387c2947ddf1900dd849038e08c2757416a3aa788a04"
+    },
+    {
+      "path": "src/api/index.ts",
+      "sha256": "bb5b3721c2b92d0b59fc4afd93fb519013591e486c3811217ed7620b1b4b89e5"
+    },
+    {
+      "path": "src/api/messaging.ts",
+      "sha256": "6ff835b77b71ac4a13bd753c895913fd24b11ffd9caf827ee6c92a159437f69d"
+    },
+    {
+      "path": "src/api/paths.ts",
+      "sha256": "4ffed7b7d576dc11081bf6b43511465d3a5db410bd25c425ef47b69b154981ad"
+    },
+    {
+      "path": "src/auth/index.ts",
+      "sha256": "657fc63738bdcd61d83133120732a477dd127448cf2c51229b05d21f5e1f5c04"
+    },
+    {
+      "path": "src/http/client.ts",
+      "sha256": "05609fa19c8bfded1765dadb8f875dae5dd3e6f11f13244f6239450dea8732fc"
+    },
+    {
+      "path": "src/http/index.ts",
+      "sha256": "fc204fbe89750b9d25ecaffe41003e6ac243a1a895b65e65856202ab825d2dbe"
+    },
+    {
+      "path": "src/index.ts",
+      "sha256": "1b72e156546dff1aa4a094a8fb926ab543ccd7e320d3aacef790509f4df5f48b"
+    },
+    {
+      "path": "src/sdk.ts",
+      "sha256": "77919cb5c2a3edc0910e94b2c688073cc500fbe2f3797230aeaa0c0162aa2b6e"
+    },
+    {
+      "path": "src/types/common.ts",
+      "sha256": "ac5b348259c39e2cd8357dfcf8269268ee1da5f8a6e0770d714ab5eb796b3050"
+    },
+    {
+      "path": "src/types/index.ts",
+      "sha256": "5f326a216d313a23dd2724b33e40a1b4cd163af781397a05744352955a392db2"
+    },
+    {
+      "path": "src/types/messaging-announcement-list-response.ts",
+      "sha256": "6000b5b53bd100e33f1402f7f87493b7317d4b754dab699b6089f7f644c3db52"
+    },
+    {
+      "path": "src/types/messaging-announcement-receipt-response.ts",
+      "sha256": "f38a572b698abe08cd15168405e6b92c985feb3ff77ae88f4eccb46476515375"
+    },
+    {
+      "path": "src/types/messaging-announcement.ts",
+      "sha256": "5234e1748d64228d333b11b70733288416a10ce7c73760be79eb2788e308b228"
+    },
+    {
+      "path": "src/types/messaging-notification-list-response.ts",
+      "sha256": "4da8718822ffb11fe01035dc4947608159dccbe8a750b166b60de46b449e6481"
+    },
+    {
+      "path": "src/types/messaging-notification-receipt-response.ts",
+      "sha256": "9c76f38eb4580b0e67abe90f48348dc351ec6d723264b351f333ae83fa1fab3c"
+    },
+    {
+      "path": "src/types/messaging-notification.ts",
+      "sha256": "339afe9b8cd7997dc8b8870af4c261daf673f8d0060904dd2c26bdf690a55129"
+    },
+    {
+      "path": "src/types/messaging-push-device-register-request.ts",
+      "sha256": "b616caecdd39dde1e3b3a8143ea9f3eef3300c86ec63c6056835c0f1d3624ff7"
+    },
+    {
+      "path": "src/types/messaging-push-device-response.ts",
+      "sha256": "48a3c6846139fac182691df1b1c5c2567fafe5cac6684f6fe08395e02a459351"
+    },
+    {
+      "path": "src/types/messaging-push-device-unregister-response.ts",
+      "sha256": "63d9c59c3725bfc208d7466f0badc703ba2143505e1be2a570013d641665d5a8"
+    },
+    {
+      "path": "src/types/messaging-verification-code-create-request.ts",
+      "sha256": "f6b3bbc8a90a4b648c1007e22c3601c843dbb0618c37883e8364a54e916d3b91"
+    },
+    {
+      "path": "src/types/messaging-verification-code-response.ts",
+      "sha256": "95211b47ce93c19bbd8cc0db09a0394376a2d6a0ad69deb0352415bc4f1f3846"
+    },
+    {
+      "path": "src/types/messaging-verification-code-verify-request.ts",
+      "sha256": "963d7cd550dc407ec1ac6d22ba2299bc3f396b4a0db34ab3b563abdeb3e36900"
+    },
+    {
+      "path": "src/types/messaging-verification-code-verify-response.ts",
+      "sha256": "3dcf93d3e22c44df1d5f38706949a7eab3073c4c6a7d1cb0ab3c7c4550ad634c"
+    },
+    {
+      "path": "src/types/page-info.ts",
+      "sha256": "e6bb77af689ee1a5875e522d1c829c8bb61906c7b1c140288a194002dc223fee"
+    },
+    {
+      "path": "src/types/problem-detail.ts",
+      "sha256": "e051a68eb4309127f17144ee2c61c395bf34eb6acf8fb7d5d5aa7c2d45a2e272"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "7c8a6c2b00fb208ec28e1e6045194487d1b3e563d6c44cef4783fd4fe0e8ffad"
+    }
+  ],
+  "scaffoldFiles": [
+    "custom/build-runtime.mjs",
+    "custom/README.md"
+  ],
+  "customRoots": [
+    "custom/"
+  ]
+}

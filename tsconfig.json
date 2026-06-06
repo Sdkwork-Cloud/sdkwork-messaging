@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.base.json",
+  "include": [
+    "vitest.config.ts",
+    "vitest.setup.ts",
+    "packages/**/*.ts",
+    "packages/**/*.tsx",
+    "scripts/**/*.mjs"
+  ],
+  "exclude": [
+    "sdks/**/generated/server-openapi"
+  ]
+}

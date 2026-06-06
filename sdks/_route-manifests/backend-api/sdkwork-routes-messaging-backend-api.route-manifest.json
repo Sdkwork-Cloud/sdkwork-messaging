@@ -1,0 +1,348 @@
+{
+  "schemaVersion": 1,
+  "kind": "sdkwork.route.manifest",
+  "packageName": "sdkwork-routes-messaging-backend-api",
+  "surface": "backend-api",
+  "owner": "sdkwork-messaging",
+  "domain": "messaging",
+  "capability": "messaging",
+  "apiAuthority": "sdkwork-messaging-backend-api",
+  "sdkFamily": "sdkwork-messaging-backend-sdk",
+  "prefix": "/backend/v3/api",
+  "source": {
+    "crateRoot": "packages/native-rust/routes/backend-api/sdkwork-routes-messaging-backend-api",
+    "crateImport": "sdkwork_routes_messaging_backend_api"
+  },
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/backend/v3/api/messaging/notifications",
+      "operationId": "messaging.notifications.list",
+      "tags": [
+        "messaging"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "messaging_notifications_list"
+      },
+      "schemas": {
+        "request": null,
+        "response": "MessagingNotificationListResponse",
+        "problem": "ProblemDetail"
+      },
+      "idempotency": {
+        "required": false,
+        "header": null
+      },
+      "ownership": {
+        "owner": "sdkwork-messaging",
+        "apiAuthority": "sdkwork-messaging-backend-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-routes-messaging-backend-api"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/backend/v3/api/messaging/notifications",
+      "operationId": "messaging.notifications.create",
+      "tags": [
+        "messaging"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "messaging_notifications_create"
+      },
+      "schemas": {
+        "request": "MessagingNotificationCreateRequest",
+        "response": "MessagingNotificationResponse",
+        "problem": "ProblemDetail"
+      },
+      "idempotency": {
+        "required": true,
+        "header": "Idempotency-Key"
+      },
+      "ownership": {
+        "owner": "sdkwork-messaging",
+        "apiAuthority": "sdkwork-messaging-backend-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-routes-messaging-backend-api"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/backend/v3/api/messaging/announcements",
+      "operationId": "messaging.announcements.list",
+      "tags": [
+        "messaging"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "messaging_announcements_list"
+      },
+      "schemas": {
+        "request": null,
+        "response": "MessagingAnnouncementListResponse",
+        "problem": "ProblemDetail"
+      },
+      "idempotency": {
+        "required": false,
+        "header": null
+      },
+      "ownership": {
+        "owner": "sdkwork-messaging",
+        "apiAuthority": "sdkwork-messaging-backend-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-routes-messaging-backend-api"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/backend/v3/api/messaging/announcements",
+      "operationId": "messaging.announcements.publish",
+      "tags": [
+        "messaging"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "messaging_announcements_publish"
+      },
+      "schemas": {
+        "request": "MessagingAnnouncementPublishRequest",
+        "response": "MessagingAnnouncementResponse",
+        "problem": "ProblemDetail"
+      },
+      "idempotency": {
+        "required": true,
+        "header": "Idempotency-Key"
+      },
+      "ownership": {
+        "owner": "sdkwork-messaging",
+        "apiAuthority": "sdkwork-messaging-backend-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-routes-messaging-backend-api"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/backend/v3/api/messaging/push_messages",
+      "operationId": "messaging.pushMessages.list",
+      "tags": [
+        "messaging"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "messaging_pushMessages_list"
+      },
+      "schemas": {
+        "request": null,
+        "response": "MessagingPushMessageListResponse",
+        "problem": "ProblemDetail"
+      },
+      "idempotency": {
+        "required": false,
+        "header": null
+      },
+      "ownership": {
+        "owner": "sdkwork-messaging",
+        "apiAuthority": "sdkwork-messaging-backend-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-routes-messaging-backend-api"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/backend/v3/api/messaging/push_messages",
+      "operationId": "messaging.pushMessages.send",
+      "tags": [
+        "messaging"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "messaging_pushMessages_send"
+      },
+      "schemas": {
+        "request": "MessagingPushMessageSendRequest",
+        "response": "MessagingPushMessageResponse",
+        "problem": "ProblemDetail"
+      },
+      "idempotency": {
+        "required": true,
+        "header": "Idempotency-Key"
+      },
+      "ownership": {
+        "owner": "sdkwork-messaging",
+        "apiAuthority": "sdkwork-messaging-backend-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-routes-messaging-backend-api"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/backend/v3/api/messaging/outbound_messages",
+      "operationId": "messaging.outboundMessages.list",
+      "tags": [
+        "messaging"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "messaging_outboundMessages_list"
+      },
+      "schemas": {
+        "request": null,
+        "response": "MessagingOutboundMessageListResponse",
+        "problem": "ProblemDetail"
+      },
+      "idempotency": {
+        "required": false,
+        "header": null
+      },
+      "ownership": {
+        "owner": "sdkwork-messaging",
+        "apiAuthority": "sdkwork-messaging-backend-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-routes-messaging-backend-api"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/backend/v3/api/messaging/outbound_messages",
+      "operationId": "messaging.outboundMessages.send",
+      "tags": [
+        "messaging"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "messaging_outboundMessages_send"
+      },
+      "schemas": {
+        "request": "MessagingOutboundMessageSendRequest",
+        "response": "MessagingOutboundMessageResponse",
+        "problem": "ProblemDetail"
+      },
+      "idempotency": {
+        "required": true,
+        "header": "Idempotency-Key"
+      },
+      "ownership": {
+        "owner": "sdkwork-messaging",
+        "apiAuthority": "sdkwork-messaging-backend-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-routes-messaging-backend-api"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/backend/v3/api/messaging/verification_policies",
+      "operationId": "messaging.verificationPolicies.list",
+      "tags": [
+        "messaging"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "messaging_verificationPolicies_list"
+      },
+      "schemas": {
+        "request": null,
+        "response": "MessagingVerificationPolicyListResponse",
+        "problem": "ProblemDetail"
+      },
+      "idempotency": {
+        "required": false,
+        "header": null
+      },
+      "ownership": {
+        "owner": "sdkwork-messaging",
+        "apiAuthority": "sdkwork-messaging-backend-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-routes-messaging-backend-api"
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/backend/v3/api/messaging/verification_policies/{policyId}",
+      "operationId": "messaging.verificationPolicies.update",
+      "tags": [
+        "messaging"
+      ],
+      "auth": {
+        "mode": "dual-token",
+        "required": true
+      },
+      "handler": {
+        "module": "crate::handlers",
+        "name": "messaging_verificationPolicies_update"
+      },
+      "schemas": {
+        "request": "MessagingVerificationPolicyUpdateRequest",
+        "response": "MessagingVerificationPolicyResponse",
+        "problem": "ProblemDetail"
+      },
+      "idempotency": {
+        "required": true,
+        "header": "Idempotency-Key"
+      },
+      "ownership": {
+        "owner": "sdkwork-messaging",
+        "apiAuthority": "sdkwork-messaging-backend-api"
+      },
+      "source": {
+        "file": "src/lib.rs",
+        "routeCrate": "sdkwork-routes-messaging-backend-api"
+      }
+    }
+  ]
+}

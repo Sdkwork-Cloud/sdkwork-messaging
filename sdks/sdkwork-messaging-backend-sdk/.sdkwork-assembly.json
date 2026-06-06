@@ -1,0 +1,40 @@
+{
+  "workspace": "sdkwork-messaging-backend-sdk",
+  "title": "SDKWork Messaging Backend API",
+  "apiVersion": "1.0.0",
+  "openapiVersion": "3.1.2",
+  "authoritySpec": "openapi/sdkwork-messaging-backend-api.openapi.yaml",
+  "generationInputSpec": "openapi/sdkwork-messaging-backend-api.sdkgen.yaml",
+  "derivedSpecs": {
+    "default": "openapi/sdkwork-messaging-backend-api.sdkgen.yaml"
+  },
+  "sdkOwner": "sdkwork-messaging",
+  "apiAuthority": "sdkwork-messaging-backend-api",
+  "sdkDependencies": [],
+  "discoverySurface": {
+    "sdkTarget": "backend",
+    "apiPrefix": "/backend/v3/api",
+    "schemaUrl": "/backend/v3/openapi.json",
+    "generatedProtocols": [
+      "http-openapi"
+    ],
+    "manualTransports": []
+  },
+  "languages": [
+    {
+      "language": "typescript",
+      "workspace": "sdkwork-messaging-backend-sdk-typescript",
+      "generationState": "ready",
+      "releaseState": "not_published",
+      "packagePath": "sdkwork-messaging-backend-sdk-typescript/generated/server-openapi",
+      "manifestPath": "sdkwork-messaging-backend-sdk-typescript/generated/server-openapi/package.json",
+      "name": "@sdkwork/messaging-backend-sdk",
+      "version": "1.0.0",
+      "generatedPath": "sdkwork-messaging-backend-sdk-typescript/generated/server-openapi"
+    }
+  ],
+  "metadata": {
+    "managedBy": "sdks/materialize-messaging-v3-openapi-boundaries.mjs",
+    "standardVersion": "2026-06-06"
+  }
+}
