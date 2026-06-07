@@ -4,8 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const APPBASE_ROOT =
-  "D:\\javasource\\spring-ai-plus\\spring-ai-plus-business\\apps\\sdkwork-appbase";
+const APPBASE_ROOT = path.resolve(ROOT, "..", "sdkwork-appbase");
 
 const requiredCurrentFiles = [
   "package.json",
@@ -279,9 +278,9 @@ if (existsSync(APPBASE_ROOT)) {
   }
 
   const workspace = readFileSync(path.join(APPBASE_ROOT, "pnpm-workspace.yaml"), "utf8");
-  assert.doesNotMatch(workspace, /sdkwork-opensource[\\/]sdkwork-messaging/u);
+  assert.doesNotMatch(workspace, /sdkwork-space[\\/]sdkwork-messaging/u);
   const tsconfig = readFileSync(path.join(APPBASE_ROOT, "tsconfig.base.json"), "utf8");
-  assert.doesNotMatch(tsconfig, /sdkwork-opensource[\\/]sdkwork-messaging/u);
+  assert.doesNotMatch(tsconfig, /sdkwork-space[\\/]sdkwork-messaging/u);
   assert.doesNotMatch(tsconfig, /"@sdkwork\/(?:conversation|im-pc-react|messaging-[\w-]+|channel-pc-react|contacts-pc-react|social-pc-react)"/u);
 
   const lockfile = readFileSync(path.join(APPBASE_ROOT, "pnpm-lock.yaml"), "utf8");

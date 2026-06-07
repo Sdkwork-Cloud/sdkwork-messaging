@@ -134,7 +134,7 @@
         "title": "Unified package check",
         "required": true,
         "rationale": "Validate the generated package with the unified publish helper. Triggered by: api-surface, models, runtime, build-metadata, publish-workflow, documentation, custom-scaffold, unknown.",
-        "workingDirectory": "D:\\sdkwork-opensource\\sdkwork-messaging\\sdks\\sdkwork-messaging-app-sdk\\sdkwork-messaging-app-sdk-typescript\\generated\\server-openapi",
+        "workingDirectory": "E:\\sdkwork-space\\sdkwork-messaging\\sdks\\sdkwork-messaging-app-sdk\\sdkwork-messaging-app-sdk-typescript\\generated\\server-openapi",
         "command": "node",
         "args": [
           "./bin/publish-core.mjs",
@@ -152,7 +152,7 @@
         "title": "Unified package build",
         "required": true,
         "rationale": "Run the full package build because this language uses a lighter check path than the final build. Triggered by: api-surface, models, runtime, build-metadata, publish-workflow, documentation, custom-scaffold, unknown.",
-        "workingDirectory": "D:\\sdkwork-opensource\\sdkwork-messaging\\sdks\\sdkwork-messaging-app-sdk\\sdkwork-messaging-app-sdk-typescript\\generated\\server-openapi",
+        "workingDirectory": "E:\\sdkwork-space\\sdkwork-messaging\\sdks\\sdkwork-messaging-app-sdk\\sdkwork-messaging-app-sdk-typescript\\generated\\server-openapi",
         "command": "node",
         "args": [
           "./bin/publish-core.mjs",
@@ -177,7 +177,7 @@
         "title": "Unified package check",
         "required": true,
         "rationale": "Validate the generated package with the unified publish helper. Triggered by: api-surface, models, runtime, build-metadata, publish-workflow, documentation, custom-scaffold, unknown.",
-        "workingDirectory": "D:\\sdkwork-opensource\\sdkwork-messaging\\sdks\\sdkwork-messaging-app-sdk\\sdkwork-messaging-app-sdk-typescript\\generated\\server-openapi",
+        "workingDirectory": "E:\\sdkwork-space\\sdkwork-messaging\\sdks\\sdkwork-messaging-app-sdk\\sdkwork-messaging-app-sdk-typescript\\generated\\server-openapi",
         "command": "node",
         "args": [
           "./bin/publish-core.mjs",
@@ -195,7 +195,7 @@
         "title": "Unified package build",
         "required": true,
         "rationale": "Run the full package build because this language uses a lighter check path than the final build. Triggered by: api-surface, models, runtime, build-metadata, publish-workflow, documentation, custom-scaffold, unknown.",
-        "workingDirectory": "D:\\sdkwork-opensource\\sdkwork-messaging\\sdks\\sdkwork-messaging-app-sdk\\sdkwork-messaging-app-sdk-typescript\\generated\\server-openapi",
+        "workingDirectory": "E:\\sdkwork-space\\sdkwork-messaging\\sdks\\sdkwork-messaging-app-sdk\\sdkwork-messaging-app-sdk-typescript\\generated\\server-openapi",
         "command": "node",
         "args": [
           "./bin/publish-core.mjs",
@@ -215,7 +215,7 @@
     "version": "1.0.0",
     "language": "typescript",
     "sdkType": "app",
-    "outputPath": "D:\\sdkwork-opensource\\sdkwork-messaging\\sdks\\sdkwork-messaging-app-sdk\\sdkwork-messaging-app-sdk-typescript\\generated\\server-openapi",
+    "outputPath": "E:\\sdkwork-space\\sdkwork-messaging\\sdks\\sdkwork-messaging-app-sdk\\sdkwork-messaging-app-sdk-typescript\\generated\\server-openapi",
     "packageName": "@sdkwork/messaging-app-sdk"
   },
   "versioning": {
@@ -395,7 +395,7 @@
           "title": "Unified package check",
           "required": true,
           "rationale": "Validate the generated package with the unified publish helper. Triggered by: api-surface, models, runtime, build-metadata, publish-workflow, documentation, custom-scaffold, unknown.",
-          "workingDirectory": "D:\\sdkwork-opensource\\sdkwork-messaging\\sdks\\sdkwork-messaging-app-sdk\\sdkwork-messaging-app-sdk-typescript\\generated\\server-openapi",
+          "workingDirectory": "E:\\sdkwork-space\\sdkwork-messaging\\sdks\\sdkwork-messaging-app-sdk\\sdkwork-messaging-app-sdk-typescript\\generated\\server-openapi",
           "command": "node",
           "args": [
             "./bin/publish-core.mjs",
@@ -413,7 +413,7 @@
           "title": "Unified package build",
           "required": true,
           "rationale": "Run the full package build because this language uses a lighter check path than the final build. Triggered by: api-surface, models, runtime, build-metadata, publish-workflow, documentation, custom-scaffold, unknown.",
-          "workingDirectory": "D:\\sdkwork-opensource\\sdkwork-messaging\\sdks\\sdkwork-messaging-app-sdk\\sdkwork-messaging-app-sdk-typescript\\generated\\server-openapi",
+          "workingDirectory": "E:\\sdkwork-space\\sdkwork-messaging\\sdks\\sdkwork-messaging-app-sdk\\sdkwork-messaging-app-sdk-typescript\\generated\\server-openapi",
           "command": "node",
           "args": [
             "./bin/publish-core.mjs",

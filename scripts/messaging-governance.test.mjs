@@ -4,8 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const APPBASE_ROOT =
-  "D:\\javasource\\spring-ai-plus\\spring-ai-plus-business\\apps\\sdkwork-appbase";
+const APPBASE_ROOT = path.resolve(ROOT, "..", "sdkwork-appbase");
 
 const families = [
   {
