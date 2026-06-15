@@ -1,8 +1,8 @@
 [workspace]
 resolver = "2"
 members = [
-    "packages/native-rust/messaging/sdkwork-messaging-core-rust",
-    "packages/native-rust/messaging/sdkwork-messaging-storage-sqlx-rust",
-    "packages/native-rust/routes/app-api/sdkwork-routes-messaging-app-api",
-    "packages/native-rust/routes/backend-api/sdkwork-routes-messaging-backend-api"
+    "crates/sdkwork-messaging-delivery-service",
+    "crates/sdkwork-messaging-delivery-repository-sqlx",
+    "crates/sdkwork-router-messaging-app-api",
+    "crates/sdkwork-router-messaging-backend-api"
 ]

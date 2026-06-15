@@ -19,7 +19,7 @@ const FAMILIES = [
     domain: "messaging",
     tag: "messaging",
     packageName: "@sdkwork/messaging-app-sdk",
-    routeCrate: "sdkwork-routes-messaging-app-api",
+    routeCrate: "sdkwork-router-messaging-app-api",
     auth: "dual-token",
     routes: [
       route("GET", "/app/v3/api/messaging/notifications", "messaging.notifications.list", "messaging.notifications", "messaging.notifications.list", null, "MessagingNotificationListResponse", false),
@@ -43,7 +43,7 @@ const FAMILIES = [
     domain: "messaging",
     tag: "messaging",
     packageName: "@sdkwork/messaging-backend-sdk",
-    routeCrate: "sdkwork-routes-messaging-backend-api",
+    routeCrate: "sdkwork-router-messaging-backend-api",
     auth: "dual-token",
     routes: [
       route("GET", "/backend/v3/api/messaging/notifications", "messaging.notifications.list", "messaging.notifications", "messaging.notifications.list", null, "MessagingNotificationListResponse", false),
@@ -508,7 +508,7 @@ function operation(family, routeItem) {
     "x-sdkwork-audit-event": routeItem.auditEvent,
     "x-sdkwork-idempotent": routeItem.idempotent,
     "x-sdkwork-deployment": "all",
-    "x-sdkwork-source": `packages/native-rust/routes/${family.surface}/${family.routeCrate}`,
+    "x-sdkwork-source": `crates/${family.routeCrate}`,
     "x-sdkwork-source-route-crate": family.routeCrate,
     "x-sdkwork-server-request-id": true,
   };
@@ -570,7 +570,7 @@ function routeManifest(family) {
     sdkFamily: family.family,
     prefix: family.prefix,
     source: {
-      crateRoot: `packages/native-rust/routes/${family.surface}/${family.routeCrate}`,
+      crateRoot: `crates/${family.routeCrate}`,
       crateImport: family.routeCrate.replaceAll("-", "_"),
     },
     routes: family.routes.map((routeItem) => ({

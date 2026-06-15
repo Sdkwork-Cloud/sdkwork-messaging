@@ -1,9 +1,0 @@
-[package]
-name = "sdkwork-routes-messaging-backend-api"
-version = "0.1.0"
-edition = "2021"
-license = "Apache-2.0"
-description = "SDKWork Messaging backend-api route manifest."
-
-[lib]
-path = "src/lib.rs"

@@ -17,11 +17,11 @@ const requiredCurrentFiles = [
   "packages/common/messaging/sdkwork-messaging-sdk-ports/package.json",
   "packages/common/messaging/sdkwork-messaging-service/package.json",
   "packages/common/messaging/sdkwork-messaging-runtime/package.json",
-  "packages/native-rust/messaging/sdkwork-messaging-core-rust/Cargo.toml",
-  "packages/native-rust/messaging/sdkwork-messaging-storage-sqlx-rust/Cargo.toml",
-  "packages/native-rust/messaging/sdkwork-messaging-storage-sqlx-rust/migrations/0001_messaging_storage.sql",
-  "packages/native-rust/routes/app-api/sdkwork-routes-messaging-app-api/Cargo.toml",
-  "packages/native-rust/routes/backend-api/sdkwork-routes-messaging-backend-api/Cargo.toml",
+  "crates/sdkwork-messaging-delivery-service/Cargo.toml",
+  "crates/sdkwork-messaging-delivery-repository-sqlx/Cargo.toml",
+  "crates/sdkwork-messaging-delivery-repository-sqlx/migrations/0001_messaging_storage.sql",
+  "crates/sdkwork-router-messaging-app-api/Cargo.toml",
+  "crates/sdkwork-router-messaging-backend-api/Cargo.toml",
   "sdks/materialize-messaging-v3-openapi-boundaries.mjs",
   "sdks/sdkwork-messaging-app-sdk/openapi/sdkwork-messaging-app-api.openapi.yaml",
   "sdks/sdkwork-messaging-app-sdk/openapi/sdkwork-messaging-app-api.sdkgen.yaml",
@@ -33,7 +33,7 @@ const forbiddenCurrentPaths = [
   "packages/common/conversation",
   "packages/pc-react/communication",
   "packages/pc-react/messaging/sdkwork-messaging-admin-pc-react",
-  "packages/native-rust/routes/open-api/sdkwork-routes-im-open-api",
+  "crates/sdkwork-router-im-open-api",
   "sdks/_route-manifests/open-api/sdkwork-routes-im-open-api.route-manifest.json",
   "sdks/sdkwork-im-sdk",
 ];
@@ -241,7 +241,7 @@ assert.ok(
 );
 
 const migrationSql = readFileSync(
-  path.join(ROOT, "packages/native-rust/messaging/sdkwork-messaging-storage-sqlx-rust/migrations/0001_messaging_storage.sql"),
+  path.join(ROOT, "crates/sdkwork-messaging-delivery-repository-sqlx/migrations/0001_messaging_storage.sql"),
   "utf8",
 );
 for (const expectedConstraint of [

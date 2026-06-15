@@ -155,8 +155,8 @@
         "x-sdkwork-audit-event": "messaging.notifications.list",
         "x-sdkwork-idempotent": false,
         "x-sdkwork-deployment": "all",
-        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-messaging-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-routes-messaging-app-api",
+        "x-sdkwork-source": "crates/sdkwork-router-messaging-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-router-messaging-app-api",
         "x-sdkwork-server-request-id": true
       }
     },
@@ -288,8 +288,8 @@
         "x-sdkwork-audit-event": "messaging.notifications.mark_read",
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
-        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-messaging-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-routes-messaging-app-api",
+        "x-sdkwork-source": "crates/sdkwork-router-messaging-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-router-messaging-app-api",
         "x-sdkwork-server-request-id": true
       }
     },
@@ -421,8 +421,8 @@
         "x-sdkwork-audit-event": "messaging.announcements.list",
         "x-sdkwork-idempotent": false,
         "x-sdkwork-deployment": "all",
-        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-messaging-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-routes-messaging-app-api",
+        "x-sdkwork-source": "crates/sdkwork-router-messaging-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-router-messaging-app-api",
         "x-sdkwork-server-request-id": true
       }
     },
@@ -554,8 +554,8 @@
         "x-sdkwork-audit-event": "messaging.announcements.acknowledge",
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
-        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-messaging-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-routes-messaging-app-api",
+        "x-sdkwork-source": "crates/sdkwork-router-messaging-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-router-messaging-app-api",
         "x-sdkwork-server-request-id": true
       }
     },
@@ -678,8 +678,8 @@
         "x-sdkwork-audit-event": "messaging.push_devices.register",
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
-        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-messaging-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-routes-messaging-app-api",
+        "x-sdkwork-source": "crates/sdkwork-router-messaging-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-router-messaging-app-api",
         "x-sdkwork-server-request-id": true,
         "requestBody": {
           "required": true,
@@ -821,8 +821,8 @@
         "x-sdkwork-audit-event": "messaging.push_devices.unregister",
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
-        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-messaging-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-routes-messaging-app-api",
+        "x-sdkwork-source": "crates/sdkwork-router-messaging-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-router-messaging-app-api",
         "x-sdkwork-server-request-id": true
       }
     },
@@ -945,8 +945,8 @@
         "x-sdkwork-audit-event": "messaging.verification_codes.create",
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
-        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-messaging-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-routes-messaging-app-api",
+        "x-sdkwork-source": "crates/sdkwork-router-messaging-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-router-messaging-app-api",
         "x-sdkwork-server-request-id": true,
         "requestBody": {
           "required": true,
@@ -1079,8 +1079,8 @@
         "x-sdkwork-audit-event": "messaging.verification_codes.verify",
         "x-sdkwork-idempotent": true,
         "x-sdkwork-deployment": "all",
-        "x-sdkwork-source": "packages/native-rust/routes/app-api/sdkwork-routes-messaging-app-api",
-        "x-sdkwork-source-route-crate": "sdkwork-routes-messaging-app-api",
+        "x-sdkwork-source": "crates/sdkwork-router-messaging-app-api",
+        "x-sdkwork-source-route-crate": "sdkwork-router-messaging-app-api",
         "x-sdkwork-server-request-id": true,
         "requestBody": {
           "required": true,

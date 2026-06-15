@@ -3,17 +3,17 @@
 version = 4
 
 [[package]]
-name = "sdkwork-routes-messaging-app-api"
+name = "sdkwork-messaging-delivery-repository-sqlx"
 version = "0.1.0"
 
 [[package]]
-name = "sdkwork-routes-messaging-backend-api"
+name = "sdkwork-messaging-delivery-service"
 version = "0.1.0"
 
 [[package]]
-name = "sdkwork_messaging_core"
+name = "sdkwork-router-messaging-app-api"
 version = "0.1.0"
 
 [[package]]
-name = "sdkwork_messaging_storage_sqlx"
+name = "sdkwork-router-messaging-backend-api"
 version = "0.1.0"
