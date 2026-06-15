@@ -8,3 +8,6 @@ description = "SQLx storage contracts for SDKWork messaging."
 [lib]
 name = "sdkwork_messaging_delivery_repository_sqlx"
 path = "src/lib.rs"
+
+[dependencies]
+sdkwork-pool-config = { path = "../../../sdkwork-pool/crates/sdkwork-pool-config" }
