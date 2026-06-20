@@ -1,0 +1,49 @@
+schema_version: 1
+kind: sdkwork.database.schema
+module_id: messaging
+contract_version: 1.0.0
+owner_team: messaging-platform
+compliance_level: L2
+engines:
+  - postgres
+table_prefix: messaging_
+tables:
+  - name: messaging_notification
+    lifecycle_status: active
+    owner: messaging-platform
+  - name: messaging_notification_recipient
+    lifecycle_status: active
+    owner: messaging-platform
+  - name: messaging_announcement
+    lifecycle_status: active
+    owner: messaging-platform
+  - name: messaging_announcement_audience
+    lifecycle_status: active
+    owner: messaging-platform
+  - name: messaging_announcement_receipt
+    lifecycle_status: active
+    owner: messaging-platform
+  - name: messaging_push_device
+    lifecycle_status: active
+    owner: messaging-platform
+  - name: messaging_push_message
+    lifecycle_status: active
+    owner: messaging-platform
+  - name: messaging_push_delivery
+    lifecycle_status: active
+    owner: messaging-platform
+  - name: messaging_outbound_message
+    lifecycle_status: active
+    owner: messaging-platform
+  - name: messaging_outbound_delivery
+    lifecycle_status: active
+    owner: messaging-platform
+  - name: messaging_verification_policy
+    lifecycle_status: active
+    owner: messaging-platform
+  - name: messaging_verification_challenge
+    lifecycle_status: active
+    owner: messaging-platform
+  - name: messaging_verification_attempt
+    lifecycle_status: active
+    owner: messaging-platform

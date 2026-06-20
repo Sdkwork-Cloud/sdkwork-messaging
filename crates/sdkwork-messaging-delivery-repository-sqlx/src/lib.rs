@@ -1,3 +1,11 @@
+mod bootstrap;
+
+pub use bootstrap::{
+    bootstrap_messaging_database, bootstrap_messaging_database_from_env,
+    connect_and_bootstrap_messaging_database_from_env, connect_messaging_database_pool_from_env,
+    MessagingDatabaseHost, MessagingDatabasePool,
+};
+
 pub const MESSAGING_STORAGE_MIGRATION: &str = "0001_messaging_storage.sql";
 
 const MESSAGING_INITIAL_MIGRATION_SQL: &str =
