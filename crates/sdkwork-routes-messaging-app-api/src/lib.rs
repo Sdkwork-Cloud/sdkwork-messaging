@@ -37,7 +37,7 @@ pub struct MessagingRoute {
 pub fn messaging_app_api_manifest() -> MessagingRouteManifest {
     MessagingRouteManifest {
         kind: "sdkwork.route.manifest",
-        package_name: "sdkwork-router-messaging-app-api",
+        package_name: "sdkwork-routes-messaging-app-api",
         surface: "app-api",
         owner: "sdkwork-messaging",
         domain: "messaging",
@@ -144,6 +144,14 @@ fn route(
         supports_idempotency_key,
         ownership_owner: "sdkwork-messaging",
         ownership_api_authority: MESSAGING_APP_API_AUTHORITY,
-        source_route_crate: "sdkwork-router-messaging-app-api",
+        source_route_crate: "sdkwork-routes-messaging-app-api",
     }
+}
+
+pub fn gateway_route_manifest() -> MessagingRouteManifest {
+    messaging_app_api_manifest()
+}
+
+pub fn gateway_mount() -> axum::Router {
+    axum::Router::new()
 }

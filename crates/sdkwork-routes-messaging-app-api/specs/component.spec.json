@@ -2,11 +2,11 @@
   "schemaVersion": 1,
   "kind": "sdkwork.component.spec",
   "component": {
-    "name": "sdkwork-router-messaging-app-api",
+    "name": "sdkwork-routes-messaging-app-api",
     "displayName": "SDKWork Router Messaging App API",
     "version": "0.1.0",
     "type": "rust-route-crate",
-    "root": "sdkwork-messaging/crates/sdkwork-router-messaging-app-api",
+    "root": "sdkwork-messaging/crates/sdkwork-routes-messaging-app-api",
     "domain": "messaging",
     "capability": "messaging",
     "languages": [
@@ -77,17 +77,17 @@
   ],
   "contracts": {
     "publicExports": [
-      "sdkwork_router_messaging_app_api::*"
+      "sdkwork_routes_messaging_app_api::*"
     ],
     "runtimeEntrypoints": [],
-    "routeManifest": "sdks/_route-manifests/app-api/sdkwork-router-messaging-app-api.route-manifest.json",
+    "routeManifest": "sdks/_route-manifests/app-api/sdkwork-routes-messaging-app-api.route-manifest.json",
     "sdkClients": [],
     "events": [],
     "configKeys": []
   },
   "verification": {
     "commands": [
-      "cargo test -p sdkwork-router-messaging-app-api"
+      "cargo test -p sdkwork-routes-messaging-app-api"
     ]
   }
 }

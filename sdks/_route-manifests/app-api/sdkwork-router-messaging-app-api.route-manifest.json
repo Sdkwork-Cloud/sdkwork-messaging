@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "kind": "sdkwork.route.manifest",
-  "packageName": "sdkwork-router-messaging-app-api",
+  "packageName": "sdkwork-routes-messaging-app-api",
   "surface": "app-api",
   "owner": "sdkwork-messaging",
   "domain": "messaging",
@@ -10,8 +10,8 @@
   "sdkFamily": "sdkwork-messaging-app-sdk",
   "prefix": "/app/v3/api",
   "source": {
-    "crateRoot": "crates/sdkwork-router-messaging-app-api",
-    "crateImport": "sdkwork_router_messaging_app_api"
+    "crateRoot": "crates/sdkwork-routes-messaging-app-api",
+    "crateImport": "sdkwork_routes_messaging_app_api"
   },
   "routes": [
     {
@@ -44,7 +44,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-messaging-app-api"
+        "routeCrate": "sdkwork-routes-messaging-app-api"
       }
     },
     {
@@ -77,7 +77,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-messaging-app-api"
+        "routeCrate": "sdkwork-routes-messaging-app-api"
       }
     },
     {
@@ -110,7 +110,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-messaging-app-api"
+        "routeCrate": "sdkwork-routes-messaging-app-api"
       }
     },
     {
@@ -143,7 +143,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-messaging-app-api"
+        "routeCrate": "sdkwork-routes-messaging-app-api"
       }
     },
     {
@@ -176,7 +176,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-messaging-app-api"
+        "routeCrate": "sdkwork-routes-messaging-app-api"
       }
     },
     {
@@ -209,7 +209,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-messaging-app-api"
+        "routeCrate": "sdkwork-routes-messaging-app-api"
       }
     },
     {
@@ -242,7 +242,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-messaging-app-api"
+        "routeCrate": "sdkwork-routes-messaging-app-api"
       }
     },
     {
@@ -275,7 +275,7 @@
       },
       "source": {
         "file": "src/lib.rs",
-        "routeCrate": "sdkwork-router-messaging-app-api"
+        "routeCrate": "sdkwork-routes-messaging-app-api"
       }
     }
   ]

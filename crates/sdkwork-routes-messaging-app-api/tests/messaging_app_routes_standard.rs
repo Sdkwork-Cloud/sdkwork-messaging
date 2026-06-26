@@ -1,4 +1,4 @@
-use sdkwork_router_messaging_app_api::{
+use sdkwork_routes_messaging_app_api::{
     messaging_app_api_manifest, MESSAGING_APP_API_AUTHORITY, MESSAGING_APP_API_AUTH_MODE,
     MESSAGING_APP_API_PREFIX, MESSAGING_APP_SDK_FAMILY,
 };
@@ -8,7 +8,7 @@ fn declares_standard_app_api_route_manifest() {
     let manifest = messaging_app_api_manifest();
 
     assert_eq!(manifest.kind, "sdkwork.route.manifest");
-    assert_eq!(manifest.package_name, "sdkwork-router-messaging-app-api");
+    assert_eq!(manifest.package_name, "sdkwork-routes-messaging-app-api");
     assert_eq!(manifest.surface, "app-api");
     assert_eq!(manifest.owner, "sdkwork-messaging");
     assert_eq!(manifest.domain, "messaging");
@@ -28,7 +28,7 @@ fn app_api_routes_use_app_prefix_and_dual_token_auth() {
         assert_eq!(route.auth_mode, MESSAGING_APP_API_AUTH_MODE);
         assert_eq!(route.ownership_owner, "sdkwork-messaging");
         assert_eq!(route.ownership_api_authority, MESSAGING_APP_API_AUTHORITY);
-        assert_eq!(route.source_route_crate, "sdkwork-router-messaging-app-api");
+        assert_eq!(route.source_route_crate, "sdkwork-routes-messaging-app-api");
     }
 
     assert!(manifest

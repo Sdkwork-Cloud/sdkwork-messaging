@@ -1,10 +1,10 @@
 [package]
-name = "sdkwork-router-messaging-app-api"
+name = "sdkwork-routes-messaging-app-api"
 version = "0.1.0"
 edition = "2021"
 license = "Apache-2.0"
 description = "SDKWork Messaging app-api route manifest."
 
 [lib]
-name = "sdkwork_router_messaging_app_api"
+name = "sdkwork_routes_messaging_app_api"
 path = "src/lib.rs"

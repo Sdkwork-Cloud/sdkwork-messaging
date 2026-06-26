@@ -1069,11 +1069,11 @@ name = "sdkwork-messaging-delivery-service"
 version = "0.1.0"
 
 [[package]]
-name = "sdkwork-router-messaging-app-api"
+name = "sdkwork-routes-messaging-app-api"
 version = "0.1.0"
 
 [[package]]
-name = "sdkwork-router-messaging-backend-api"
+name = "sdkwork-routes-messaging-backend-api"
 version = "0.1.0"
 
 [[package]]

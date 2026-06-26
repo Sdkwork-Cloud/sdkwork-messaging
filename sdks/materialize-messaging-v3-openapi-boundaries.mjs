@@ -19,7 +19,7 @@ const FAMILIES = [
     domain: "messaging",
     tag: "messaging",
     packageName: "@sdkwork/messaging-app-sdk",
-    routeCrate: "sdkwork-router-messaging-app-api",
+    routeCrate: "sdkwork-routes-messaging-app-api",
     auth: "dual-token",
     routes: [
       route("GET", "/app/v3/api/messaging/notifications", "messaging.notifications.list", "messaging.notifications", "messaging.notifications.list", null, "MessagingNotificationListResponse", false),
@@ -43,7 +43,7 @@ const FAMILIES = [
     domain: "messaging",
     tag: "messaging",
     packageName: "@sdkwork/messaging-backend-sdk",
-    routeCrate: "sdkwork-router-messaging-backend-api",
+    routeCrate: "sdkwork-routes-messaging-backend-api",
     auth: "dual-token",
     routes: [
       route("GET", "/backend/v3/api/messaging/notifications", "messaging.notifications.list", "messaging.notifications", "messaging.notifications.list", null, "MessagingNotificationListResponse", false),

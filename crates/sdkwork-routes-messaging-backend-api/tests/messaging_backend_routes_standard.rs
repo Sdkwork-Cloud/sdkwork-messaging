@@ -1,4 +1,4 @@
-use sdkwork_router_messaging_backend_api::{
+use sdkwork_routes_messaging_backend_api::{
     messaging_backend_api_manifest, MESSAGING_BACKEND_API_AUTHORITY,
     MESSAGING_BACKEND_API_AUTH_MODE, MESSAGING_BACKEND_API_PREFIX, MESSAGING_BACKEND_SDK_FAMILY,
 };
@@ -10,7 +10,7 @@ fn declares_standard_backend_api_route_manifest() {
     assert_eq!(manifest.kind, "sdkwork.route.manifest");
     assert_eq!(
         manifest.package_name,
-        "sdkwork-router-messaging-backend-api"
+        "sdkwork-routes-messaging-backend-api"
     );
     assert_eq!(manifest.surface, "backend-api");
     assert_eq!(manifest.owner, "sdkwork-messaging");
@@ -36,7 +36,7 @@ fn backend_api_routes_use_backend_prefix_and_dual_token_auth() {
         );
         assert_eq!(
             route.source_route_crate,
-            "sdkwork-router-messaging-backend-api"
+            "sdkwork-routes-messaging-backend-api"
         );
     }
 

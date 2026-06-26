@@ -1,11 +1,11 @@
-# sdkwork-router-messaging-backend-api
+# sdkwork-routes-messaging-app-api
 
 Domain: communication
-Capability: routes-messaging-backend-api
+Capability: routes-messaging-app-api
 Package type: rust-route-crate
 Status: standard
 
-This README is the SDKWork module entrypoint for `sdkwork-router-messaging-backend-api`. The machine-readable component contract is `specs/component.spec.json`; canonical standards are under `../../../../../../sdkwork-specs/`.
+This README is the SDKWork module entrypoint for `sdkwork-routes-messaging-app-api`. The machine-readable component contract is `specs/component.spec.json`; canonical standards are under `../../../../../../sdkwork-specs/`.
 
 ## Public API
 

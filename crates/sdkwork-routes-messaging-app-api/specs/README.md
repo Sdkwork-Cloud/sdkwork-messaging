@@ -1,8 +1,8 @@
 # Component Specs
 
-This directory is the local SDKWork component contract for `sdkwork-router-messaging-app-api`.
+This directory is the local SDKWork component contract for `sdkwork-routes-messaging-app-api`.
 
-- Component root: `sdkwork-messaging/crates/sdkwork-router-messaging-app-api`
+- Component root: `sdkwork-messaging/crates/sdkwork-routes-messaging-app-api`
 - Canonical standards: `../../../../../../sdkwork-specs/README.md`
 - Machine-readable contract: `specs/component.spec.json`
 

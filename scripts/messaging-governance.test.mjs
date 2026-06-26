@@ -12,14 +12,14 @@ const families = [
     authority: "sdkwork-messaging-app-api",
     prefix: "/app/v3/api",
     surface: "app-api",
-    routeManifest: "sdkwork-router-messaging-app-api.route-manifest.json",
+    routeManifest: "sdkwork-routes-messaging-app-api.route-manifest.json",
   },
   {
     family: "sdkwork-messaging-backend-sdk",
     authority: "sdkwork-messaging-backend-api",
     prefix: "/backend/v3/api",
     surface: "backend-api",
-    routeManifest: "sdkwork-router-messaging-backend-api.route-manifest.json",
+    routeManifest: "sdkwork-routes-messaging-backend-api.route-manifest.json",
   },
 ];
 
@@ -27,8 +27,8 @@ const forbiddenLegacyArtifacts = [
   "packages/common/conversation",
   "packages/pc-react/communication",
   "packages/pc-react/messaging/sdkwork-messaging-admin-pc-react",
-  "crates/sdkwork-router-im-open-api",
-  "sdks/_route-manifests/open-api/sdkwork-router-im-open-api.route-manifest.json",
+  "crates/sdkwork-routes-im-open-api",
+  "sdks/_route-manifests/open-api/sdkwork-routes-im-open-api.route-manifest.json",
   "sdks/sdkwork-im-sdk",
 ];
 
@@ -41,7 +41,7 @@ const forbiddenLegacyTextPatterns = [
   /sdkwork-im-pc-react/u,
   /sdkwork-im-sdk/u,
   /sdkwork-im-open-api/u,
-  /sdkwork-router-im-open-api/u,
+  /sdkwork-routes-im-open-api/u,
   /\/im\/v3\/api/u,
   /\bmessaging_provider_[a-z0-9_]+/iu,
   /\bmessaging_template[a-z0-9_]*\b/iu,
