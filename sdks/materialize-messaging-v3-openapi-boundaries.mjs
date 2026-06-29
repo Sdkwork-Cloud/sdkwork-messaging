@@ -1,6 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import { bootstrapOpenApiEnvelope } from "../../sdkwork-specs/tools/lib/migrate-openapi-legacy-envelope.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const GENERATOR_PATH = path.resolve(ROOT, "../sdkwork-sdk-generator/bin/sdkgen.js");
@@ -750,7 +751,7 @@ async function main() {
       path.join(ROOT, "sdks", "_route-manifests", family.surface, `${family.routeCrate}.route-manifest.json`),
       routeManifest(family),
     );
-    const openApi = buildOpenApi(family);
+    const openApi = bootstrapOpenApiEnvelope(buildOpenApi(family));
     await writeJson(path.join(ROOT, "sdks", family.family, "openapi", `${family.apiAuthority}.openapi.yaml`), openApi);
     await writeJson(
       path.join(ROOT, "sdks", family.family, "openapi", `${family.apiAuthority}.sdkgen.yaml`),
