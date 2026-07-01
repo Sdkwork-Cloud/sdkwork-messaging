@@ -1,3 +1,4 @@
 packages:
-  - "packages/common/*/*"
+  - "apps/sdkwork-messaging-common"
+  - "apps/sdkwork-messaging-common/packages/*"
   - "sdks/*"

@@ -1,4 +1,5 @@
 # sdkwork-messaging
+repository-kind: application
 
 `sdkwork-messaging` owns the SDKWork messaging system for app-facing notifications, announcements, app push, SMS/email outbound delivery, and verification-code delivery.
 

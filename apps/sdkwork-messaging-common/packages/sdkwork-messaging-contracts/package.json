@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test": "pnpm --dir ../../../.. exec vitest run packages/common/messaging/sdkwork-messaging-contracts/tests --config vitest.config.ts --configLoader native --pool vmThreads"
+    "test": "pnpm --dir ../../../.. exec vitest run apps/sdkwork-messaging-common/packages/sdkwork-messaging-contracts/tests --config vitest.config.ts --configLoader native --pool vmThreads"
   },
   "sdkwork": {
     "workspace": "sdkwork-messaging",

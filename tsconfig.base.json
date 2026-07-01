@@ -11,19 +11,19 @@
     "baseUrl": ".",
     "paths": {
       "@sdkwork/messaging-runtime-bootstrap": [
-        "packages/common/foundation/sdkwork-messaging-runtime-bootstrap/src/index.ts"
+        "apps/sdkwork-messaging-common/packages/sdkwork-messaging-runtime-bootstrap/src/index.ts"
       ],
       "@sdkwork/messaging-contracts": [
-        "packages/common/messaging/sdkwork-messaging-contracts/src/index.ts"
+        "apps/sdkwork-messaging-common/packages/sdkwork-messaging-contracts/src/index.ts"
       ],
       "@sdkwork/messaging-sdk-ports": [
-        "packages/common/messaging/sdkwork-messaging-sdk-ports/src/index.ts"
+        "apps/sdkwork-messaging-common/packages/sdkwork-messaging-sdk-ports/src/index.ts"
       ],
       "@sdkwork/messaging-service": [
-        "packages/common/messaging/sdkwork-messaging-service/src/index.ts"
+        "apps/sdkwork-messaging-common/packages/sdkwork-messaging-service/src/index.ts"
       ],
       "@sdkwork/messaging-runtime": [
-        "packages/common/messaging/sdkwork-messaging-runtime/src/index.ts"
+        "apps/sdkwork-messaging-common/packages/sdkwork-messaging-runtime/src/index.ts"
       ]
     },
     "allowImportingTsExtensions": true,

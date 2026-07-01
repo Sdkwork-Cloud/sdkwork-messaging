@@ -11,10 +11,13 @@
       "default": "./src/index.ts"
     }
   },
-  "files": ["src", "README.md"],
+  "files": [
+    "src",
+    "README.md"
+  ],
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "test": "pnpm --dir ../../../.. exec vitest run packages/common/messaging/sdkwork-messaging-service/tests --config vitest.config.ts --configLoader native --pool vmThreads"
+    "test": "pnpm --dir ../../../.. exec vitest run apps/sdkwork-messaging-common/packages/sdkwork-messaging-service/tests --config vitest.config.ts --configLoader native --pool vmThreads"
   },
   "dependencies": {
     "@sdkwork/messaging-sdk-ports": "workspace:*"

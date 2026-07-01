@@ -31,11 +31,9 @@ importers:
         specifier: ^4.1.2
         version: 4.1.8(@types/node@25.9.2)
 
-  packages/common/foundation/sdkwork-messaging-runtime-bootstrap: {}
+  apps/sdkwork-messaging-common/packages/sdkwork-messaging-contracts: {}
 
-  packages/common/messaging/sdkwork-messaging-contracts: {}
-
-  packages/common/messaging/sdkwork-messaging-runtime:
+  apps/sdkwork-messaging-common/packages/sdkwork-messaging-runtime:
     dependencies:
       '@sdkwork/messaging-contracts':
         specifier: workspace:*
@@ -47,9 +45,11 @@ importers:
         specifier: workspace:*
         version: link:../sdkwork-messaging-service
 
-  packages/common/messaging/sdkwork-messaging-sdk-ports: {}
+  apps/sdkwork-messaging-common/packages/sdkwork-messaging-runtime-bootstrap: {}
 
-  packages/common/messaging/sdkwork-messaging-service:
+  apps/sdkwork-messaging-common/packages/sdkwork-messaging-sdk-ports: {}
+
+  apps/sdkwork-messaging-common/packages/sdkwork-messaging-service:
     dependencies:
       '@sdkwork/messaging-sdk-ports':
         specifier: workspace:*
