@@ -15,6 +15,7 @@ version = "0.1.0"
 
 [workspace.dependencies]
 sdkwork-messaging-database-host = { path = "crates/sdkwork-messaging-database-host" }
+axum = { version = "0.8", features = ["ws"] }
 sdkwork-database-config = { path = "../sdkwork-database/crates/sdkwork-database-config", package = "sdkwork-database-config" }
 sdkwork-database-lifecycle = { path = "../sdkwork-database/crates/sdkwork-database-lifecycle", package = "sdkwork-database-lifecycle" }
 sdkwork-database-spi = { path = "../sdkwork-database/crates/sdkwork-database-spi", package = "sdkwork-database-spi" }

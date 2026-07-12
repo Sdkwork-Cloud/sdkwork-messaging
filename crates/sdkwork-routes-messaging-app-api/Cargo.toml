@@ -8,3 +8,6 @@ description = "SDKWork Messaging app-api route manifest."
 [lib]
 name = "sdkwork_routes_messaging_app_api"
 path = "src/lib.rs"
+
+[dependencies]
+axum.workspace = true
