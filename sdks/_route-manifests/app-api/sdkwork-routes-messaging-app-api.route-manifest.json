@@ -50,7 +50,7 @@
     {
       "method": "POST",
       "path": "/app/v3/api/messaging/notifications/{notificationId}/read",
-      "operationId": "messaging.notifications.markRead",
+      "operationId": "messaging.notifications.read",
       "tags": [
         "messaging"
       ],
@@ -60,7 +60,7 @@
       },
       "handler": {
         "module": "crate::handlers",
-        "name": "messaging_notifications_markRead"
+        "name": "messaging_notifications_read"
       },
       "schemas": {
         "request": null,
@@ -149,7 +149,7 @@
     {
       "method": "POST",
       "path": "/app/v3/api/messaging/push_devices",
-      "operationId": "messaging.pushDevices.register",
+      "operationId": "messaging.pushDevices.create",
       "tags": [
         "messaging"
       ],
@@ -159,7 +159,7 @@
       },
       "handler": {
         "module": "crate::handlers",
-        "name": "messaging_pushDevices_register"
+        "name": "messaging_pushDevices_create"
       },
       "schemas": {
         "request": "MessagingPushDeviceRegisterRequest",
@@ -182,7 +182,7 @@
     {
       "method": "DELETE",
       "path": "/app/v3/api/messaging/push_devices/{deviceId}",
-      "operationId": "messaging.pushDevices.unregister",
+      "operationId": "messaging.pushDevices.delete",
       "tags": [
         "messaging"
       ],
@@ -192,7 +192,7 @@
       },
       "handler": {
         "module": "crate::handlers",
-        "name": "messaging_pushDevices_unregister"
+        "name": "messaging_pushDevices_delete"
       },
       "schemas": {
         "request": null,

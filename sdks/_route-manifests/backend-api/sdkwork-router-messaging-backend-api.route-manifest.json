@@ -116,7 +116,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/messaging/announcements",
-      "operationId": "messaging.announcements.publish",
+      "operationId": "messaging.announcements.create",
       "tags": [
         "messaging"
       ],
@@ -182,7 +182,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/messaging/push_messages",
-      "operationId": "messaging.pushMessages.send",
+      "operationId": "messaging.pushMessages.create",
       "tags": [
         "messaging"
       ],
@@ -248,7 +248,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/messaging/outbound_messages",
-      "operationId": "messaging.outboundMessages.send",
+      "operationId": "messaging.outboundMessages.create",
       "tags": [
         "messaging"
       ],

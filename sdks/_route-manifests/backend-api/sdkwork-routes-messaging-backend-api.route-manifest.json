@@ -116,7 +116,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/messaging/announcements",
-      "operationId": "messaging.announcements.publish",
+      "operationId": "messaging.announcements.create",
       "tags": [
         "messaging"
       ],
@@ -126,7 +126,7 @@
       },
       "handler": {
         "module": "crate::handlers",
-        "name": "messaging_announcements_publish"
+        "name": "messaging_announcements_create"
       },
       "schemas": {
         "request": "MessagingAnnouncementPublishRequest",
@@ -182,7 +182,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/messaging/push_messages",
-      "operationId": "messaging.pushMessages.send",
+      "operationId": "messaging.pushMessages.create",
       "tags": [
         "messaging"
       ],
@@ -192,7 +192,7 @@
       },
       "handler": {
         "module": "crate::handlers",
-        "name": "messaging_pushMessages_send"
+        "name": "messaging_pushMessages_create"
       },
       "schemas": {
         "request": "MessagingPushMessageSendRequest",
@@ -248,7 +248,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/messaging/outbound_messages",
-      "operationId": "messaging.outboundMessages.send",
+      "operationId": "messaging.outboundMessages.create",
       "tags": [
         "messaging"
       ],
@@ -258,7 +258,7 @@
       },
       "handler": {
         "module": "crate::handlers",
-        "name": "messaging_outboundMessages_send"
+        "name": "messaging_outboundMessages_create"
       },
       "schemas": {
         "request": "MessagingOutboundMessageSendRequest",

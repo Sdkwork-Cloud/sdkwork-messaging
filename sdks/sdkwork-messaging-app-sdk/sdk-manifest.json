@@ -1,15 +1,4 @@
 {
-  "schemaVersion": 1,
-  "sdkFamily": "sdkwork-messaging-app-sdk",
-  "sdkName": "sdkwork-messaging-app-sdk",
-  "packageName": "@sdkwork/messaging-app-sdk",
-  "transportPackageName": "sdkwork-messaging-app-sdk-generated-typescript",
-  "typescript": {
-    "composedRoot": "sdkwork-messaging-app-sdk-typescript",
-    "composedEntry": "sdkwork-messaging-app-sdk-typescript/src/index.ts",
-    "transportRoot": "sdkwork-messaging-app-sdk-typescript/generated/server-openapi",
-    "transportEntry": "sdkwork-messaging-app-sdk-typescript/generated/server-openapi/src/index.ts"
-  },
   "workspace": "sdkwork-messaging-app-sdk",
   "title": "SDKWork Messaging App API",
   "apiVersion": "1.0.0",
@@ -21,6 +10,7 @@
   },
   "sdkOwner": "sdkwork-messaging",
   "apiAuthority": "sdkwork-messaging-app-api",
+  "sdkDependencies": [],
   "discoverySurface": {
     "sdkTarget": "app",
     "apiPrefix": "/app/v3/api",
@@ -30,11 +20,6 @@
     ],
     "manualTransports": []
   },
-  "sdkDependencies": [],
-  "metadata": {
-    "managedBy": "sdks/materialize-messaging-v3-openapi-boundaries.mjs",
-    "standardVersion": "2026-06-06"
-  },
   "languages": [
     {
       "language": "typescript",
@@ -43,10 +28,13 @@
       "releaseState": "not_published",
       "packagePath": "sdkwork-messaging-app-sdk-typescript/generated/server-openapi",
       "manifestPath": "sdkwork-messaging-app-sdk-typescript/generated/server-openapi/package.json",
+      "name": "@sdkwork/messaging-app-sdk",
       "version": "1.0.0",
-      "generatedPath": "sdkwork-messaging-app-sdk-typescript/generated/server-openapi",
-      "consumerPackageName": "@sdkwork/messaging-app-sdk",
-      "transportPackageName": "sdkwork-messaging-app-sdk-generated-typescript"
+      "generatedPath": "sdkwork-messaging-app-sdk-typescript/generated/server-openapi"
     }
-  ]
+  ],
+  "metadata": {
+    "managedBy": "sdks/materialize-messaging-v3-openapi-boundaries.mjs",
+    "standardVersion": "2026-06-06"
+  }
 }

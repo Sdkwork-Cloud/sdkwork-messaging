@@ -50,7 +50,7 @@
     {
       "method": "POST",
       "path": "/app/v3/api/messaging/notifications/{notificationId}/read",
-      "operationId": "messaging.notifications.markRead",
+      "operationId": "messaging.notifications.read",
       "tags": [
         "messaging"
       ],
@@ -149,7 +149,7 @@
     {
       "method": "POST",
       "path": "/app/v3/api/messaging/push_devices",
-      "operationId": "messaging.pushDevices.register",
+      "operationId": "messaging.pushDevices.create",
       "tags": [
         "messaging"
       ],
@@ -182,7 +182,7 @@
     {
       "method": "DELETE",
       "path": "/app/v3/api/messaging/push_devices/{deviceId}",
-      "operationId": "messaging.pushDevices.unregister",
+      "operationId": "messaging.pushDevices.delete",
       "tags": [
         "messaging"
       ],

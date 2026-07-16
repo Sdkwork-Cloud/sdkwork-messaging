@@ -2,6 +2,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import { bootstrapOpenApiEnvelope } from "../../sdkwork-specs/tools/lib/migrate-openapi-legacy-envelope.mjs";
+import { alignOpenApiOperationPatterns } from "../../sdkwork-specs/tools/lib/align-api-operation-patterns.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const GENERATOR_PATH = path.resolve(ROOT, "../sdkwork-sdk-generator/bin/sdkgen.js");
@@ -747,11 +748,18 @@ foreach ($LanguageValue in $Languages) {
 
 async function main() {
   for (const family of FAMILIES) {
+    const openApi = alignOpenApiOperationPatterns(bootstrapOpenApiEnvelope(buildOpenApi(family))).document;
+    const alignedFamily = {
+      ...family,
+      routes: family.routes.map((route) => ({
+        ...route,
+        operationId: openApi.paths[route.path][route.method.toLowerCase()].operationId,
+      })),
+    };
     await writeJson(
       path.join(ROOT, "sdks", "_route-manifests", family.surface, `${family.routeCrate}.route-manifest.json`),
-      routeManifest(family),
+      routeManifest(alignedFamily),
     );
-    const openApi = bootstrapOpenApiEnvelope(buildOpenApi(family));
     await writeJson(path.join(ROOT, "sdks", family.family, "openapi", `${family.apiAuthority}.openapi.yaml`), openApi);
     await writeJson(
       path.join(ROOT, "sdks", family.family, "openapi", `${family.apiAuthority}.sdkgen.yaml`),
@@ -760,7 +768,7 @@ async function main() {
         "x-sdkwork-derived-from": `openapi/${family.apiAuthority}.openapi.yaml`,
       },
     );
-    await writeJson(path.join(ROOT, "sdks", family.family, ".sdkwork-assembly.json"), assembly(family));
+    await writeJson(path.join(ROOT, "sdks", family.family, "sdk-manifest.json"), assembly(family));
     await writeJson(path.join(ROOT, "sdks", family.family, "specs", "component.spec.json"), component(family));
     await writeText(path.join(ROOT, "sdks", family.family, "bin", "generate-sdk.ps1"), generateSdkScript(family));
     await writeText(path.join(ROOT, "sdks", family.family, "README.md"), `# ${family.family}\n\n${family.description}\n`);

@@ -170,7 +170,7 @@ function assertNoLegacyTextResidues(scopeRoot, label) {
 for (const family of families) {
   const openApi = readJson(`sdks/${family.family}/openapi/${family.authority}.openapi.yaml`);
   const sdkgen = readJson(`sdks/${family.family}/openapi/${family.authority}.sdkgen.yaml`);
-  const assembly = readJson(`sdks/${family.family}/.sdkwork-assembly.json`);
+  const assembly = readJson(`sdks/${family.family}/sdk-manifest.json`);
   const component = readJson(`sdks/${family.family}/specs/component.spec.json`);
   const routeManifest = readJson(`sdks/_route-manifests/${family.surface}/${family.routeManifest}`);
   const generateScript = readFileSync(path.join(ROOT, "sdks", family.family, "bin", "generate-sdk.ps1"), "utf8");

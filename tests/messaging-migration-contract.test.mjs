@@ -102,7 +102,7 @@ function assertHasIdempotencyHeader(openApi, operationId) {
 function assertSdkFamily({ family, authority, owner, prefix, expectedOperationIds }) {
   const openApi = readJson(`sdks/${family}/openapi/${authority}.openapi.yaml`);
   const sdkgen = readJson(`sdks/${family}/openapi/${authority}.sdkgen.yaml`);
-  const assembly = readJson(`sdks/${family}/.sdkwork-assembly.json`);
+  const assembly = readJson(`sdks/${family}/sdk-manifest.json`);
   const component = readJson(`sdks/${family}/specs/component.spec.json`);
 
   assert.equal(openApi.openapi, "3.1.2");
