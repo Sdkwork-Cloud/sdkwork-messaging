@@ -10,7 +10,7 @@ Root SDKWork standards remain authoritative. Local component specs can narrow or
 | --- | --- |
 | Name | `@sdkwork/messaging-runtime` |
 | Type | `node-package` |
-| Root | `sdkwork-messaging/packages/common/messaging/sdkwork-messaging-runtime` |
+| Root | `sdkwork-messaging/apps/sdkwork-messaging-common/packages/sdkwork-messaging-runtime` |
 | Domain | `messaging` |
 | Capability | `messaging-runtime` |
 | Languages | `typescript` |

@@ -2,7 +2,7 @@
 
 This directory is the local SDKWork component contract for `@sdkwork/messaging-runtime-bootstrap`.
 
-- Component root: `sdkwork-messaging/packages/common/foundation/sdkwork-messaging-runtime-bootstrap`
+- Component root: `sdkwork-messaging/apps/sdkwork-messaging-common/packages/sdkwork-messaging-runtime-bootstrap`
 - Canonical standards: `../../../../../sdkwork-specs/README.md`
 - Machine-readable contract: `specs/component.spec.json`
 

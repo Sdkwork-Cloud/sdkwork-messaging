@@ -37,7 +37,7 @@ export default defineConfig({
   test: {
     environment: "node",
     include: [
-      "packages/**/*.test.ts",
+      "apps/sdkwork-messaging-common/packages/**/*.test.ts",
       "sdks/**/*.test.ts"
     ],
   },

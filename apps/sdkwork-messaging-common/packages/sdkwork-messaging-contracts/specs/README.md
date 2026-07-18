@@ -10,7 +10,7 @@ Root SDKWork standards remain authoritative. Local component specs can narrow or
 | --- | --- |
 | Name | `@sdkwork/messaging-contracts` |
 | Type | `node-package` |
-| Root | `sdkwork-messaging/packages/common/messaging/sdkwork-messaging-contracts` |
+| Root | `sdkwork-messaging/apps/sdkwork-messaging-common/packages/sdkwork-messaging-contracts` |
 | Domain | `messaging` |
 | Capability | `messaging-contracts` |
 | Languages | `typescript` |

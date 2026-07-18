@@ -11,5 +11,5 @@ path = "src/lib.rs"
 [dependencies]
 axum.workspace = true
 tokio = { version = "1.48", features = ["macros", "rt-multi-thread"] }
-sdkwork_routes_messaging_app_api = { package = "sdkwork-routes-messaging-app-api", path = "../sdkwork-routes-messaging-app-api" }
-sdkwork_routes_messaging_backend_api = { package = "sdkwork-routes-messaging-backend-api", path = "../sdkwork-routes-messaging-backend-api" }
+sdkwork_routes_messaging_app_api.workspace = true
+sdkwork_routes_messaging_backend_api.workspace = true

@@ -255,13 +255,13 @@ for (const requiredTerm of requiredMessagingTerms) {
 
 assert.ok(allOperationIds.includes("messaging.verificationCodes.create"));
 assert.ok(allOperationIds.includes("messaging.verificationCodes.verify"));
-assert.ok(allOperationIds.includes("messaging.outboundMessages.send"));
+assert.ok(allOperationIds.includes("messaging.outboundMessages.create"));
 
 for (const operationId of [
-  "messaging.notifications.markRead",
+  "messaging.notifications.read",
   "messaging.announcements.acknowledge",
-  "messaging.pushDevices.register",
-  "messaging.pushDevices.unregister",
+  "messaging.pushDevices.create",
+  "messaging.pushDevices.delete",
   "messaging.verificationCodes.create",
   "messaging.verificationCodes.verify",
 ]) {
@@ -270,9 +270,9 @@ for (const operationId of [
 
 for (const operationId of [
   "messaging.notifications.create",
-  "messaging.announcements.publish",
-  "messaging.pushMessages.send",
-  "messaging.outboundMessages.send",
+  "messaging.announcements.create",
+  "messaging.pushMessages.create",
+  "messaging.outboundMessages.create",
   "messaging.verificationPolicies.update",
 ]) {
   assertHasIdempotencyHeader(backendOpenApi, operationId);
@@ -304,7 +304,8 @@ for (const forbiddenPath of forbiddenLegacyArtifacts) {
 
 assertNoLegacyTextResidues(ROOT, "messaging workspace");
 
-const packageJsonFiles = walkFiles(path.join(ROOT, "packages")).filter((file) => path.basename(file) === "package.json");
+const packagesRoot = path.join(ROOT, "apps", "sdkwork-messaging-common", "packages");
+const packageJsonFiles = walkFiles(packagesRoot).filter((file) => path.basename(file) === "package.json");
 const packageNames = packageJsonFiles.map((file) => JSON.parse(readFileSync(file, "utf8")).name).sort();
 for (const expected of [
   "@sdkwork/messaging-contracts",
@@ -316,7 +317,7 @@ for (const expected of [
   assert.ok(packageNames.includes(expected), `missing package ${expected}`);
 }
 
-const staleAppbaseDescriptions = walkFiles(path.join(ROOT, "packages"))
+const staleAppbaseDescriptions = walkFiles(packagesRoot)
   .filter((file) => /\.(?:md|json|ts|tsx|js|mjs|rs|toml)$/u.test(file))
   .flatMap((file) => {
     const content = readFileSync(file, "utf8");
