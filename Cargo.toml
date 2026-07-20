@@ -1,6 +1,7 @@
 [workspace]
 resolver = "2"
 members = [
+    "crates/sdkwork-api-messaging-assembly",
     "crates/sdkwork-messaging-gateway-assembly",
     "crates/sdkwork-messaging-database-host",
     "crates/sdkwork-messaging-delivery-service",

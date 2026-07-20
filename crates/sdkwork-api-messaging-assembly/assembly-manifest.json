@@ -1,0 +1,32 @@
+{
+  "kind": "sdkwork.api.assembly",
+  "schemaVersion": 1,
+  "applicationCode": "messaging",
+  "apiMode": "served",
+  "packageName": "sdkwork-api-messaging-assembly",
+  "crateDir": "crates/sdkwork-api-messaging-assembly",
+  "routeCrates": [
+    {
+      "packageName": "sdkwork-routes-messaging-app-api",
+      "memberDir": "crates/sdkwork-routes-messaging-app-api",
+      "libName": "sdkwork_routes_messaging_app_api",
+      "surface": "app-api",
+      "pathPrefix": "/app/v3/api",
+      "mountOrder": 0,
+      "componentRef": "crates/sdkwork-routes-messaging-app-api/specs/component.spec.json",
+      "routeManifestRef": "crates/sdkwork-routes-messaging-app-api/sdks/_route-manifests/app-api/sdkwork-routes-messaging-app-api.route-manifest.json",
+      "sourceRef": "crates/sdkwork-routes-messaging-app-api/Cargo.toml"
+    },
+    {
+      "packageName": "sdkwork-routes-messaging-backend-api",
+      "memberDir": "crates/sdkwork-routes-messaging-backend-api",
+      "libName": "sdkwork_routes_messaging_backend_api",
+      "surface": "backend-api",
+      "pathPrefix": "/backend/v3/api",
+      "mountOrder": 1,
+      "componentRef": "crates/sdkwork-routes-messaging-backend-api/specs/component.spec.json",
+      "routeManifestRef": "crates/sdkwork-routes-messaging-backend-api/sdks/_route-manifests/backend-api/sdkwork-routes-messaging-backend-api.route-manifest.json",
+      "sourceRef": "crates/sdkwork-routes-messaging-backend-api/Cargo.toml"
+    }
+  ]
+}
