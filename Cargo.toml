@@ -6,8 +6,6 @@ members = [
     "crates/sdkwork-messaging-database-host",
     "crates/sdkwork-messaging-delivery-service",
     "crates/sdkwork-messaging-delivery-repository-sqlx",
-    "crates/sdkwork-routes-messaging-app-api",
-    "crates/sdkwork-routes-messaging-backend-api",
 ]
 
 [workspace.package]
@@ -16,8 +14,6 @@ version = "0.1.0"
 
 [workspace.dependencies]
 sdkwork-messaging-database-host = { path = "crates/sdkwork-messaging-database-host" }
-sdkwork_routes_messaging_app_api = { package = "sdkwork-routes-messaging-app-api", path = "crates/sdkwork-routes-messaging-app-api" }
-sdkwork_routes_messaging_backend_api = { package = "sdkwork-routes-messaging-backend-api", path = "crates/sdkwork-routes-messaging-backend-api" }
 axum = { version = "0.8", features = ["ws"] }
 sdkwork-database-config = { path = "../sdkwork-database/crates/sdkwork-database-config", package = "sdkwork-database-config" }
 sdkwork-database-lifecycle = { path = "../sdkwork-database/crates/sdkwork-database-lifecycle", package = "sdkwork-database-lifecycle" }
