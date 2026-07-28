@@ -34,7 +34,7 @@ const notifications: MessagingNotification[] = [
 describe("NotificationCenter", () => {
   it("loads one server page and marks the selected notification as read", async () => {
     const service = createService(pageResponse(notifications));
-    render(<NotificationCenter locale="en-US" service={service} />);
+    render(<NotificationCenter access={{ status: "authenticated", service }} locale="en-US" />);
 
     expect(screen.getByText("Loading notifications...")).toBeInTheDocument();
     expect(await screen.findByText("Production deployment completed")).toBeInTheDocument();
@@ -47,7 +47,7 @@ describe("NotificationCenter", () => {
 
   it("filters only the current server page without constructing local pagination", async () => {
     const service = createService(pageResponse(notifications));
-    render(<NotificationCenter locale="en-US" service={service} />);
+    render(<NotificationCenter access={{ status: "authenticated", service }} locale="en-US" />);
     await screen.findByText("Production deployment completed");
 
     fireEvent.click(screen.getByRole("button", { name: "Security" }));
@@ -65,7 +65,7 @@ describe("NotificationCenter", () => {
       .mockResolvedValueOnce(pageResponse(notifications, { page: 1, totalPages: 2, totalItems: 21 }))
       .mockResolvedValueOnce(pageResponse([], { page: 2, totalPages: 2, totalItems: 21 }));
     const service = createService(pageResponse(notifications), listNotifications);
-    render(<NotificationCenter locale="en-US" service={service} />);
+    render(<NotificationCenter access={{ status: "authenticated", service }} locale="en-US" />);
     await screen.findByText("Page 1 of 2");
 
     fireEvent.click(screen.getByRole("button", { name: "Next page" }));
@@ -78,9 +78,26 @@ describe("NotificationCenter", () => {
     [new Error("unknown"), "Notifications could not be loaded"],
   ])("renders commercial error recovery for %s", async (error, expectedTitle) => {
     const service = createService(pageResponse([]), vi.fn().mockRejectedValue(error));
-    render(<NotificationCenter locale="en-US" service={service} />);
+    render(<NotificationCenter access={{ status: "authenticated", service }} locale="en-US" />);
     expect(await screen.findByText(expectedTitle)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Retry" })).toBeInTheDocument();
+  });
+
+  it("renders a public guest state without requiring a notification service", () => {
+    render(
+      <NotificationCenter
+        access={{ status: "anonymous", signInHref: "/auth/login?redirect=%2Fnotifications" }}
+        locale="en-US"
+      />,
+    );
+
+    expect(screen.getAllByText("Public access enabled")).toHaveLength(2);
+    expect(screen.getByText("Personal data")).toBeInTheDocument();
+    expect(screen.getByText("Not requested")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Sign in and sync notifications" })).toHaveAttribute(
+      "href",
+      "/auth/login?redirect=%2Fnotifications",
+    );
   });
 });
 

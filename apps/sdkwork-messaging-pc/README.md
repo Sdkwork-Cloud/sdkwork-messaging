@@ -1,14 +1,14 @@
 # SDKWork Messaging PC
 
-Commercial browser notification center for SDKWork applications. The application consumes the composed Messaging App SDK, shares the appbase IAM TokenManager, and keeps notification workflows isolated behind a narrow service port.
+Commercial browser notification center for SDKWork applications. Its shell is publicly accessible, while personal notification data is loaded only for authenticated sessions through the composed Messaging App SDK and shared appbase IAM TokenManager.
 
 ## Package Map
 
 | Package | Role |
 | --- | --- |
 | `@sdkwork/messaging-pc-core` | Runtime config, composed SDK client construction, and service adapter |
-| `@sdkwork/messaging-pc-notifications` | Paginated notification center feature and package-local i18n |
-| `@sdkwork/messaging-pc-shell` | Flat application shell, account controls, and route composition |
+| `@sdkwork/messaging-pc-notifications` | Public guest state, authenticated paginated notification feature, and package-local i18n |
+| `@sdkwork/messaging-pc-shell` | Flat application shell, session-aware account controls, and route composition |
 
 ## Commands
 
@@ -21,4 +21,3 @@ pnpm check
 ```
 
 The default development URL is `http://127.0.0.1:5184/notifications`.
-

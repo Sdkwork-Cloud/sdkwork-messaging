@@ -101,9 +101,12 @@ createRoot(root).render(
     <MemoryRouter initialEntries={["/notifications"]}>
       <MessagingPcShell
         locale="en-US"
-        onSignOut={() => undefined}
-        service={service}
-        userLabel="Alex Morgan"
+        session={{
+          status: "authenticated",
+          onSignOut: () => undefined,
+          service,
+          userLabel: "Alex Morgan",
+        }}
       />
     </MemoryRouter>
   </SdkworkThemeProvider>,

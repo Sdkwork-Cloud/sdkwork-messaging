@@ -1,6 +1,20 @@
 export const notificationCenterEnUs = {
   "title": "Notification center",
   "subtitle": "Service activity and account alerts",
+  "guestSubtitle": "Public access to the notification workspace",
+  "guestBadge": "Public access enabled",
+  "guestPrivacyBody": "Personal notification data remains protected until you sign in.",
+  "guestToolbarTitle": "Notification workspace",
+  "guestToolbarStatus": "Personal stream not connected",
+  "guestTitle": "Your notification center is ready",
+  "guestBody": "You are browsing as a guest. Sign in to securely sync deployment, security, billing, and system notifications associated with your account.",
+  "guestSignIn": "Sign in and sync notifications",
+  "guestAccessLabel": "Public access",
+  "guestAccessValue": "Available",
+  "guestPrivacyLabel": "Personal data",
+  "guestPrivacyValue": "Not requested",
+  "guestSyncLabel": "Notification stream",
+  "guestSyncValue": "Connects after sign-in",
   "all": "All notifications",
   "unread": "Unread",
   "system": "System",
@@ -48,4 +62,3 @@ export const notificationCenterEnUs = {
   "urgent": "Urgent",
   "uncategorized": "General",
 } as const;
-

@@ -40,8 +40,8 @@
   },
   "integration": {
     "authority": "Root SDKWork specs remain authoritative.",
-    "dependencyPolicy": "The shell injects NotificationCenterService through the package root export.",
-    "sdkPolicy": "This feature package has no SDK transport dependency."
+    "dependencyPolicy": "The shell passes an explicit anonymous or authenticated access state. Only authenticated state includes NotificationCenterService through the package root export.",
+    "sdkPolicy": "This feature package has no SDK transport dependency. Anonymous state performs no remote notification request."
   },
   "verification": { "commands": ["pnpm --dir apps/sdkwork-messaging-pc typecheck", "pnpm --dir apps/sdkwork-messaging-pc test"] },
   "metadata": { "standardVersion": "2026-07-28" }

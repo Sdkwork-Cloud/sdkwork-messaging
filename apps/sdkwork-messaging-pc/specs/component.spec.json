@@ -41,8 +41,8 @@
   },
   "integration": {
     "authority": "Root SDKWork specs remain authoritative.",
-    "sdkPolicy": "Bootstrap creates one global TokenManager and injects a NotificationCenterService backed by the composed Messaging App SDK.",
-    "surfacePolicy": "The application is an authenticated app/user surface and does not consume backend SDKs."
+    "sdkPolicy": "Bootstrap creates one global TokenManager and injects a NotificationCenterService backed by the composed Messaging App SDK only into authenticated notification state.",
+    "surfacePolicy": "The notification shell and /notifications route are public. Anonymous visitors do not load IAM metadata or request personal notification data; authenticated sessions retain protected app/user SDK access. The application does not consume backend SDKs."
   },
   "verification": {
     "commands": [

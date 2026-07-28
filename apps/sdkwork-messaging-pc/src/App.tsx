@@ -1,7 +1,7 @@
 import { useSdkworkAuthControllerState } from "@sdkwork/auth-pc-react";
 import { SdkworkThemeProvider } from "@sdkwork/ui-pc-react/theme";
-import { lazy, Suspense } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { lazy, Suspense, useEffect } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { MessagingAuthGate } from "./auth/MessagingAuthGate.tsx";
 import type { BootstrappedMessagingPcRuntime } from "./bootstrap/runtime.ts";
 
@@ -12,15 +12,44 @@ export function App({ runtime }: { runtime: BootstrappedMessagingPcRuntime }) {
   return (
     <SdkworkThemeProvider className="messaging-theme" defaultTheme="system" locale={runtime.locale} themeColor="green-tech">
       <BrowserRouter>
-        <AuthenticatedMessagingApplication runtime={runtime} />
+        <Routes>
+          <Route path="/auth/*" element={<MessagingAuthenticationApplication runtime={runtime} />} />
+          <Route path="/*" element={<PublicMessagingApplication runtime={runtime} />} />
+        </Routes>
       </BrowserRouter>
     </SdkworkThemeProvider>
   );
 }
 
-function AuthenticatedMessagingApplication({ runtime }: { runtime: BootstrappedMessagingPcRuntime }) {
+function PublicMessagingApplication({ runtime }: { runtime: BootstrappedMessagingPcRuntime }) {
   const authState = useSdkworkAuthControllerState(runtime.authController);
   const userLabel = authState.user?.displayName || authState.user?.email;
+
+  useEffect(() => {
+    if (authState.isBootstrapped) return;
+    void runtime.authController.bootstrap().catch(() => undefined);
+  }, [authState.isBootstrapped, runtime.authController]);
+
+  const session = authState.isAuthenticated
+    ? {
+        status: "authenticated" as const,
+        onSignOut: () => { void runtime.authController.signOut(); },
+        service: runtime.notificationService,
+        userLabel,
+      }
+    : {
+        status: "anonymous" as const,
+        signInHref: "/auth/login?redirect=%2Fnotifications",
+      };
+
+  return (
+    <Suspense fallback={<div className="bootstrap-state">SDKWork Notification Center</div>}>
+      <LazyMessagingPcShell locale={runtime.locale} session={session} />
+    </Suspense>
+  );
+}
+
+function MessagingAuthenticationApplication({ runtime }: { runtime: BootstrappedMessagingPcRuntime }) {
   return (
     <MessagingAuthGate
       authRoutes={
@@ -31,14 +60,7 @@ function AuthenticatedMessagingApplication({ runtime }: { runtime: BootstrappedM
       controller={runtime.authController}
       locale={runtime.locale}
     >
-      <Suspense fallback={<div className="bootstrap-state">SDKWork Notification Center</div>}>
-        <LazyMessagingPcShell
-          locale={runtime.locale}
-          onSignOut={() => { void runtime.authController.signOut(); }}
-          service={runtime.notificationService}
-          userLabel={userLabel}
-        />
-      </Suspense>
+      <Navigate replace to="/notifications" />
     </MessagingAuthGate>
   );
 }

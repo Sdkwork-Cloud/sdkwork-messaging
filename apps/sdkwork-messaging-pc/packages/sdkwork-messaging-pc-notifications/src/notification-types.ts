@@ -1,7 +1,10 @@
-import type { MessagingNotification } from "@sdkwork/messaging-pc-core";
+import type { MessagingNotification, NotificationCenterService } from "@sdkwork/messaging-pc-core";
 
 export type NotificationView = "all" | "unread" | "system" | "deployment" | "security" | "billing";
 export type NotificationCenterErrorKind = "permission" | "unavailable" | "unknown";
+export type NotificationCenterAccess =
+  | { status: "anonymous"; signInHref: string }
+  | { status: "authenticated"; service: NotificationCenterService };
 
 export function notificationMatchesView(
   notification: MessagingNotification,
@@ -41,4 +44,3 @@ function readNumber(value: unknown): number | undefined {
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
-

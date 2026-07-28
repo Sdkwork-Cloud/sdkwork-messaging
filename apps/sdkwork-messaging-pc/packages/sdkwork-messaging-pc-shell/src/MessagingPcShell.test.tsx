@@ -18,7 +18,10 @@ describe("MessagingPcShell", () => {
     render(
       <SdkworkThemeProvider defaultTheme="light" locale="en-US">
         <MemoryRouter initialEntries={["/notifications"]}>
-          <MessagingPcShell locale="en-US" onSignOut={vi.fn()} service={service} userLabel="Ada Lovelace" />
+          <MessagingPcShell
+            locale="en-US"
+            session={{ status: "authenticated", onSignOut: vi.fn(), service, userLabel: "Ada Lovelace" }}
+          />
         </MemoryRouter>
       </SdkworkThemeProvider>,
     );
@@ -29,5 +32,22 @@ describe("MessagingPcShell", () => {
     expect(screen.getByRole("button", { name: "Sign out" })).toBeInTheDocument();
     expect(await screen.findByText("No notifications here")).toBeInTheDocument();
   });
-});
 
+  it("keeps the notification route public and presents a guest session", () => {
+    render(
+      <SdkworkThemeProvider defaultTheme="light" locale="en-US">
+        <MemoryRouter initialEntries={["/notifications"]}>
+          <MessagingPcShell
+            locale="en-US"
+            session={{ status: "anonymous", signInHref: "/auth/login?redirect=%2Fnotifications" }}
+          />
+        </MemoryRouter>
+      </SdkworkThemeProvider>,
+    );
+
+    expect(screen.getByLabelText("Browsing as a guest")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Sign in" })).toHaveAttribute("href", "/auth/login?redirect=%2Fnotifications");
+    expect(screen.queryByRole("button", { name: "Sign out" })).not.toBeInTheDocument();
+    expect(screen.getByText("Your notification center is ready")).toBeInTheDocument();
+  });
+});

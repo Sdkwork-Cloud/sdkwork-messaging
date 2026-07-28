@@ -28,7 +28,7 @@
     "requiredPorts": [
       { "name": "notificationCenter", "export": "." },
       { "name": "notificationCenterService", "export": "." },
-      { "name": "signOut", "export": "." }
+      { "name": "messagingSession", "export": "." }
     ],
     "runtimeEntrypoints": [],
     "routeManifest": { "paths": ["/", "/notifications"], "owner": "@sdkwork/messaging-pc-shell" },
@@ -40,7 +40,7 @@
   "integration": {
     "authority": "Root SDKWork specs remain authoritative.",
     "dependencyPolicy": "The shell composes feature packages only through public exports and injected ports.",
-    "sdkPolicy": "The shell never imports the Messaging SDK."
+    "sdkPolicy": "The shell never imports the Messaging SDK. Anonymous sessions receive no notification service; authenticated sessions receive the injected service and sign-out command."
   },
   "verification": { "commands": ["pnpm --dir apps/sdkwork-messaging-pc typecheck", "pnpm --dir apps/sdkwork-messaging-pc test"] },
   "metadata": { "standardVersion": "2026-07-28" }

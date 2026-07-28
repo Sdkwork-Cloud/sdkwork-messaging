@@ -2,16 +2,36 @@ import type { MessagingLocale, MessagingNotification, NotificationCenterService 
 import { ChevronLeft, ChevronRight, RefreshCw, Search } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { NotificationDetail } from "./components/NotificationDetail.tsx";
+import { NotificationGuestState } from "./components/NotificationGuestState.tsx";
 import { NotificationEmpty, NotificationError, NotificationLoading } from "./components/NotificationState.tsx";
 import { NotificationList } from "./components/NotificationList.tsx";
 import { NotificationNavigation } from "./components/NotificationNavigation.tsx";
 import { createNotificationTranslator } from "./services/notification-translator.ts";
-import { notificationMatchesSearch, notificationMatchesView, type NotificationView } from "./notification-types.ts";
+import {
+  notificationMatchesSearch,
+  notificationMatchesView,
+  type NotificationCenterAccess,
+  type NotificationView,
+} from "./notification-types.ts";
 import { useNotificationCenter } from "./use-notification-center.ts";
 
 export const NOTIFICATION_CENTER_ROUTE = "/notifications";
 
 export function NotificationCenter({
+  access,
+  locale,
+}: {
+  access: NotificationCenterAccess;
+  locale: MessagingLocale;
+}) {
+  if (access.status === "anonymous") {
+    return <NotificationGuestState locale={locale} signInHref={access.signInHref} />;
+  }
+
+  return <AuthenticatedNotificationCenter locale={locale} service={access.service} />;
+}
+
+function AuthenticatedNotificationCenter({
   locale,
   service,
 }: {

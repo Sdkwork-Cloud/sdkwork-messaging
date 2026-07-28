@@ -204,6 +204,11 @@ input:focus-visible {
   gap: 8px;
 }
 
+.messaging-sign-in {
+  min-width: 92px;
+  white-space: nowrap;
+}
+
 .messaging-header__divider {
   width: 1px;
   height: 24px;
@@ -301,6 +306,29 @@ input:focus-visible {
   color: var(--messaging-muted);
   font-size: 13px;
   line-height: 1.5;
+}
+
+.notification-guest-scope {
+  margin: 4px 10px 0;
+  border-top: 1px solid var(--messaging-border);
+  padding-top: 18px;
+}
+
+.notification-guest-scope__badge,
+.notification-guest-state__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--messaging-accent-strong);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.notification-guest-scope p {
+  margin: 9px 0 0;
+  color: var(--messaging-muted);
+  font-size: 12px;
+  line-height: 1.65;
 }
 
 .notification-nav {
@@ -447,6 +475,93 @@ input:focus-visible {
 .notification-center__detail-pane {
   min-height: calc(100vh - 136px);
   background: var(--messaging-surface);
+}
+
+.notification-guest-state {
+  display: flex;
+  width: min(820px, 100%);
+  min-height: calc(100vh - 136px);
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 64px clamp(28px, 7vw, 92px) 72px;
+}
+
+.notification-guest-state__icon {
+  display: grid;
+  width: 56px;
+  height: 56px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--messaging-accent) 32%, var(--messaging-border));
+  border-radius: 8px;
+  background: var(--messaging-active);
+  color: var(--messaging-accent);
+}
+
+.notification-guest-state__eyebrow {
+  margin-top: 24px;
+}
+
+.notification-guest-state h2 {
+  max-width: 620px;
+  margin: 12px 0 0;
+  font-size: 30px;
+  font-weight: 760;
+  line-height: 1.25;
+}
+
+.notification-guest-state > p {
+  max-width: 650px;
+  margin: 14px 0 0;
+  color: var(--messaging-muted);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.notification-guest-state__action {
+  margin-top: 26px;
+}
+
+.notification-guest-state__assurance {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin: 42px 0 0;
+  border-top: 1px solid var(--messaging-border);
+  border-bottom: 1px solid var(--messaging-border);
+}
+
+.notification-guest-state__assurance div {
+  min-width: 0;
+  padding: 17px 20px;
+}
+
+.notification-guest-state__assurance div:first-child {
+  padding-left: 0;
+}
+
+.notification-guest-state__assurance div + div {
+  border-left: 1px solid var(--messaging-border);
+}
+
+.notification-guest-state__assurance dt {
+  color: var(--messaging-faint);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.notification-guest-state__assurance dd {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 6px;
+  margin: 6px 0 0;
+  color: var(--messaging-text);
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.45;
 }
 
 .notification-list {
@@ -950,6 +1065,11 @@ input:focus-visible {
     padding: 0 0 14px;
   }
 
+  .notification-guest-scope {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
   .notification-nav {
     display: flex;
     overflow-x: auto;
@@ -975,6 +1095,11 @@ input:focus-visible {
   .notification-center__content {
     grid-template-columns: minmax(320px, 0.92fr) minmax(320px, 1.08fr);
   }
+
+  .notification-guest-state {
+    min-height: auto;
+    padding-top: 48px;
+  }
 }
 
 @media (max-width: 700px) {
@@ -992,6 +1117,20 @@ input:focus-visible {
 
   .messaging-header__account {
     gap: 3px;
+  }
+
+  .messaging-sign-in {
+    min-width: 38px;
+    width: 38px;
+    padding: 0;
+  }
+
+  .messaging-sign-in span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
   }
 
   .notification-center {
@@ -1070,5 +1209,37 @@ input:focus-visible {
     grid-template-columns: 1fr;
     gap: 3px;
   }
-}
 
+  .notification-guest-state {
+    align-items: stretch;
+    padding: 36px 18px 48px;
+  }
+
+  .notification-guest-state__icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .notification-guest-state h2 {
+    font-size: 24px;
+  }
+
+  .notification-guest-state__action {
+    align-self: flex-start;
+  }
+
+  .notification-guest-state__assurance {
+    grid-template-columns: 1fr;
+    margin-top: 34px;
+  }
+
+  .notification-guest-state__assurance div,
+  .notification-guest-state__assurance div:first-child {
+    padding: 14px 0;
+  }
+
+  .notification-guest-state__assurance div + div {
+    border-top: 1px solid var(--messaging-border);
+    border-left: 0;
+  }
+}

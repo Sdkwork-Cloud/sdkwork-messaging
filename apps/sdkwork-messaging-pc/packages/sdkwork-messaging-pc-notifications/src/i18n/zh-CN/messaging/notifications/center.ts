@@ -1,6 +1,20 @@
 export const notificationCenterZhCn = {
   "title": "通知中心",
   "subtitle": "云服务动态与账户提醒",
+  "guestSubtitle": "面向所有用户开放的通知工作台",
+  "guestBadge": "公开访问已开启",
+  "guestPrivacyBody": "登录前不会请求或展示任何个人通知数据。",
+  "guestToolbarTitle": "通知工作台",
+  "guestToolbarStatus": "个人消息通道尚未连接",
+  "guestTitle": "通知中心已就绪",
+  "guestBody": "您正在以访客身份访问。登录后可安全同步与账户关联的部署、安全、账单和系统通知。",
+  "guestSignIn": "登录并同步通知",
+  "guestAccessLabel": "公开访问",
+  "guestAccessValue": "已开放",
+  "guestPrivacyLabel": "个人数据",
+  "guestPrivacyValue": "未请求",
+  "guestSyncLabel": "消息通道",
+  "guestSyncValue": "登录后连接",
   "all": "全部通知",
   "unread": "未读通知",
   "system": "系统通知",
@@ -48,4 +62,3 @@ export const notificationCenterZhCn = {
   "urgent": "紧急",
   "uncategorized": "通用",
 } as const;
-

@@ -2,4 +2,4 @@ export { NotificationCenter, NOTIFICATION_CENTER_ROUTE } from "./NotificationCen
 export { notificationCenterEnUs, notificationCenterMessages, notificationCenterZhCn } from "./i18n/index.ts";
 export { createNotificationTranslator } from "./services/notification-translator.ts";
 export type { NotificationMessageKey, NotificationTranslator } from "./i18n/index.ts";
-export type { NotificationCenterErrorKind, NotificationView } from "./notification-types.ts";
+export type { NotificationCenterAccess, NotificationCenterErrorKind, NotificationView } from "./notification-types.ts";
