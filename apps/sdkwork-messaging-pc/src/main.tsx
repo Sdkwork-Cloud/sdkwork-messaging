@@ -1,0 +1,17 @@
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { App } from "./App.tsx";
+import { bootstrapMessagingPcRuntime } from "./bootstrap/runtime.ts";
+import "./index.css";
+
+const element = document.getElementById("root");
+if (!element) throw new Error("Application root element is missing");
+const root = createRoot(element);
+root.render(<div className="bootstrap-state" role="status">SDKWork Notification Center</div>);
+void bootstrapMessagingPcRuntime()
+  .then((runtime) => root.render(<StrictMode><App runtime={runtime} /></StrictMode>))
+  .catch((error: unknown) => {
+    console.error(error);
+    root.render(<div className="fatal-state" role="alert">Runtime configuration could not be loaded.</div>);
+  });
+

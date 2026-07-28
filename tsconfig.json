@@ -3,6 +3,8 @@
   "include": [
     "vitest.config.ts",
     "vitest.setup.ts",
+    "apps/sdkwork-messaging-pc/**/*.ts",
+    "apps/sdkwork-messaging-pc/**/*.tsx",
     "packages/**/*.ts",
     "packages/**/*.tsx",
     "scripts/**/*.mjs"

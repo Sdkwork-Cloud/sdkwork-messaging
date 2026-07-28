@@ -14,7 +14,8 @@ Runnable application roots live under `apps/<application-root>/`.
 
 | Directory | Surface role | Runnable | Purpose | Entry |
 | --- | --- | --- | --- | --- |
-| _none_ | n/a | no | No child application roots are checked in under `apps/` yet. | n/a |
+| `sdkwork-messaging-pc/` | app/user PC browser surface | yes | Commercial notification center backed by the Messaging App SDK | `src/main.tsx` |
+| `sdkwork-messaging-common/` | shared authored packages | no | Messaging contracts, services, runtime, and SDK ports | package exports |
 
 ## Allowed Content
 

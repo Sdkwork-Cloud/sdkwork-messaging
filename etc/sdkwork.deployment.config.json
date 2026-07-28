@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "kind": "sdkwork.deployment-index",
+  "application": "sdkwork-messaging",
+  "topology": "../specs/topology.spec.json",
+  "defaultProfile": "standalone.development",
+  "environments": {
+    "development": {
+      "applicationOrigin": "http://127.0.0.1:5184",
+      "cloudApiBaseUrl": "https://api-dev.sdkwork.com"
+    },
+    "production": {
+      "applicationOrigin": "https://messaging.sdkwork.com",
+      "cloudApiBaseUrl": "https://api.sdkwork.com"
+    }
+  },
+  "profiles": {
+    "standalone.development": { "config": "../apps/sdkwork-messaging-pc/etc/browser/runtime-env.development.json" },
+    "standalone.test": { "config": "../apps/sdkwork-messaging-pc/etc/browser/runtime-env.test.json" },
+    "standalone.production": { "config": "../apps/sdkwork-messaging-pc/etc/browser/runtime-env.standalone.production.json" },
+    "cloud.development": { "config": "../apps/sdkwork-messaging-pc/etc/browser/runtime-env.cloud.development.json" },
+    "cloud.staging": { "config": "../apps/sdkwork-messaging-pc/etc/browser/runtime-env.staging.json" },
+    "cloud.production": { "config": "../apps/sdkwork-messaging-pc/etc/browser/runtime-env.production.json" }
+  }
+}
+

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "kind": "sdkwork.component.spec",
+  "component": {
+    "name": "@sdkwork/messaging-pc-shell",
+    "displayName": "SDKWork Messaging PC Shell",
+    "version": "0.1.0",
+    "type": "react-package",
+    "root": "sdkwork-messaging/apps/sdkwork-messaging-pc/packages/sdkwork-messaging-pc-shell",
+    "domain": "messaging",
+    "capability": "shell",
+    "surface": "app",
+    "languages": ["typescript"],
+    "generated": false,
+    "private": true,
+    "status": "active",
+    "manifests": ["package.json", "specs/component.spec.json"]
+  },
+  "canonicalSpecs": [
+    { "file": "APP_PC_ARCHITECTURE_SPEC.md", "path": "../../../../../sdkwork-specs/APP_PC_ARCHITECTURE_SPEC.md", "purpose": "Shell and route ownership." },
+    { "file": "APP_PC_REACT_UI_SPEC.md", "path": "../../../../../sdkwork-specs/APP_PC_REACT_UI_SPEC.md", "purpose": "Responsive PC interaction." },
+    { "file": "MODULE_SPEC.md", "path": "../../../../../sdkwork-specs/MODULE_SPEC.md", "purpose": "Public package composition." }
+  ],
+  "contracts": {
+    "layerRole": "frontend-shell",
+    "publicExports": ["."],
+    "providedPorts": [{ "name": "messagingPcShell", "export": "." }],
+    "requiredPorts": [
+      { "name": "notificationCenter", "export": "." },
+      { "name": "notificationCenterService", "export": "." },
+      { "name": "signOut", "export": "." }
+    ],
+    "runtimeEntrypoints": [],
+    "routeManifest": { "paths": ["/", "/notifications"], "owner": "@sdkwork/messaging-pc-shell" },
+    "sdkClients": [],
+    "sdkDependencies": [],
+    "events": [],
+    "configKeys": []
+  },
+  "integration": {
+    "authority": "Root SDKWork specs remain authoritative.",
+    "dependencyPolicy": "The shell composes feature packages only through public exports and injected ports.",
+    "sdkPolicy": "The shell never imports the Messaging SDK."
+  },
+  "verification": { "commands": ["pnpm --dir apps/sdkwork-messaging-pc typecheck", "pnpm --dir apps/sdkwork-messaging-pc test"] },
+  "metadata": { "standardVersion": "2026-07-28" }
+}

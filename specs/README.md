@@ -5,6 +5,7 @@ This directory is the local SDKWork component contract for `@sdkwork/messaging-w
 - Component root: `sdkwork-messaging`
 - Canonical standards: `../sdkwork-specs/README.md`
 - Machine-readable contract: `specs/component.spec.json`
+- Browser application topology: `specs/topology.spec.json`
 
 Read `specs/component.spec.json` before changing this component's public exports, runtime entrypoints, SDK clients, generated artifacts, config keys, or verification commands.
 

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 5,
+  "kind": "sdkwork.app.topology",
+  "appId": "sdkwork-messaging",
+  "archetype": "client-application",
+  "profileRoot": "apps/sdkwork-messaging-pc/etc/browser",
+  "profilePattern": "runtime-env.{deploymentProfile}.{environment}.json",
+  "vocabulary": {
+    "deploymentProfile": { "allowed": ["standalone", "cloud"] },
+    "environment": { "allowed": ["development", "test", "staging", "production"] }
+  },
+  "defaults": {
+    "developmentProfileId": "standalone.development",
+    "productionProfileId": "cloud.production"
+  },
+  "profileFiles": {
+    "standalone.development": "apps/sdkwork-messaging-pc/etc/browser/runtime-env.development.json",
+    "standalone.test": "apps/sdkwork-messaging-pc/etc/browser/runtime-env.test.json",
+    "standalone.production": "apps/sdkwork-messaging-pc/etc/browser/runtime-env.standalone.production.json",
+    "cloud.development": "apps/sdkwork-messaging-pc/etc/browser/runtime-env.cloud.development.json",
+    "cloud.staging": "apps/sdkwork-messaging-pc/etc/browser/runtime-env.staging.json",
+    "cloud.production": "apps/sdkwork-messaging-pc/etc/browser/runtime-env.production.json"
+  },
+  "surfaces": {
+    "messaging-pc-browser": {
+      "connectivityPlane": "application",
+      "protocols": ["http"]
+    },
+    "platform.api-gateway": {
+      "connectivityPlane": "platform",
+      "protocols": ["http"]
+    }
+  },
+  "cloudPublicHosts": {
+    "messaging-pc-browser": { "httpHost": "messaging.sdkwork.com" },
+    "platform.api-gateway": { "httpHost": "api.sdkwork.com" }
+  },
+  "orchestration": {
+    "profiles": {
+      "standalone.development": {
+        "processes": [
+          {
+            "id": "messaging-pc-browser",
+            "role": "client",
+            "script": "dev:standalone",
+            "applicationRoot": "apps/sdkwork-messaging-pc",
+            "runtimeTargets": ["browser"],
+            "clientArchitectures": ["pc-web"],
+            "required": true
+          }
+        ],
+        "healthSurfaces": ["messaging-pc-browser"]
+      },
+      "cloud.development": {
+        "processes": [
+          {
+            "id": "messaging-pc-browser",
+            "role": "client",
+            "script": "dev:cloud",
+            "applicationRoot": "apps/sdkwork-messaging-pc",
+            "runtimeTargets": ["browser"],
+            "clientArchitectures": ["pc-web"],
+            "required": true
+          }
+        ],
+        "healthSurfaces": ["messaging-pc-browser", "platform.api-gateway"]
+      }
+    }
+  }
+}

@@ -30,7 +30,8 @@ No `sdkwork.app.config.json` is present at this root. If the task changes applic
 - `CODEX.md`: Codex compatibility shim that points to `AGENTS.md` and must not duplicate rules.
 - `sdkwork.app.config.json`: not present here; required for application roots.
 - `.sdkwork/`: reserved local dictionary folder; create only for local skills, plugins, manifests, or AI workspace metadata.
-- `specs/`: not present here; use when local contracts need to narrow root standards.
+- `specs/`: repository component contract and browser application topology authority.
+- `etc/`: repository deployment-profile index referenced by deployable application roots.
 - `sdks/`: SDK families, OpenAPI authorities, route manifests, and generated SDK artifacts.
 - `package.json`, `pnpm-workspace.yaml`, `Cargo.toml`: language/build manifests.
 - Local directories to inspect first when relevant: `packages/`, `scripts/`, `sdks/`, `tests/`.

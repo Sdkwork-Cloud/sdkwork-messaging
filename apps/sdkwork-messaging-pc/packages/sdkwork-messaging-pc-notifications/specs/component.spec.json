@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "kind": "sdkwork.component.spec",
+  "component": {
+    "name": "@sdkwork/messaging-pc-notifications",
+    "displayName": "SDKWork Messaging PC Notifications",
+    "version": "0.1.0",
+    "type": "react-package",
+    "root": "sdkwork-messaging/apps/sdkwork-messaging-pc/packages/sdkwork-messaging-pc-notifications",
+    "domain": "messaging",
+    "capability": "notifications",
+    "surface": "app",
+    "languages": ["typescript"],
+    "generated": false,
+    "private": true,
+    "status": "active",
+    "manifests": ["package.json", "specs/component.spec.json"]
+  },
+  "canonicalSpecs": [
+    { "file": "FRONTEND_SPEC.md", "path": "../../../../../sdkwork-specs/FRONTEND_SPEC.md", "purpose": "Feature service and UI state boundaries." },
+    { "file": "APP_PC_REACT_UI_SPEC.md", "path": "../../../../../sdkwork-specs/APP_PC_REACT_UI_SPEC.md", "purpose": "PC React interaction rules." },
+    { "file": "I18N_SPEC.md", "path": "../../../../../sdkwork-specs/I18N_SPEC.md", "purpose": "Package-local catalogs." },
+    { "file": "PAGINATION_SPEC.md", "path": "../../../../../sdkwork-specs/PAGINATION_SPEC.md", "purpose": "One server page per interactive request." }
+  ],
+  "contracts": {
+    "layerRole": "frontend-feature",
+    "publicExports": ["."],
+    "providedPorts": [
+      { "name": "notificationCenter", "export": "." },
+      { "name": "notificationCenterRoute", "export": "." },
+      { "name": "notificationCenterI18n", "export": "." }
+    ],
+    "requiredPorts": [{ "name": "notificationCenterService", "export": "." }],
+    "runtimeEntrypoints": [],
+    "routeManifest": { "path": "/notifications", "owner": "@sdkwork/messaging-pc-notifications" },
+    "sdkClients": [],
+    "sdkDependencies": [],
+    "events": [],
+    "configKeys": []
+  },
+  "integration": {
+    "authority": "Root SDKWork specs remain authoritative.",
+    "dependencyPolicy": "The shell injects NotificationCenterService through the package root export.",
+    "sdkPolicy": "This feature package has no SDK transport dependency."
+  },
+  "verification": { "commands": ["pnpm --dir apps/sdkwork-messaging-pc typecheck", "pnpm --dir apps/sdkwork-messaging-pc test"] },
+  "metadata": { "standardVersion": "2026-07-28" }
+}

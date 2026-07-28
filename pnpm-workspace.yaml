@@ -1,7 +1,10 @@
 packages:
   - "apps/sdkwork-messaging-common"
   - "apps/sdkwork-messaging-common/packages/*"
+  - "apps/sdkwork-messaging-pc"
+  - "apps/sdkwork-messaging-pc/packages/*"
   - "sdks/*"
+  - "sdks/sdkwork-messaging-app-sdk/sdkwork-messaging-app-sdk-typescript"
   - "../sdkwork-iam/apps/sdkwork-iam-common/packages/sdkwork-iam-contracts"
   - "../sdkwork-iam/apps/sdkwork-iam-common/packages/sdkwork-iam-runtime"
   - "../sdkwork-iam/apps/sdkwork-iam-common/packages/sdkwork-iam-sdk-ports"
