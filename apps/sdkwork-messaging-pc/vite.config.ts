@@ -20,10 +20,11 @@ export default defineConfig(({ mode }) => ({
         codeSplitting: {
           groups: [
             { name: "react-runtime", test: /node_modules[\\/].*(?:react|react-dom|react-router)/ },
-            { name: "sdkwork-auth-runtime", test: /sdkwork-(?:auth|iam|appbase)/ },
             { name: "sdkwork-ui-runtime", test: /sdkwork-(?:ui|i18n)-pc-react/ },
-            { name: "sdkwork-sdk-runtime", test: /(?:sdkwork-messaging-app-sdk|sdkwork-sdk-common)/ },
+            { name: "sdkwork-sdk-runtime", test: /(?:sdkwork-(?:messaging|iam)-app-sdk|@sdkwork[\\/+]sdk-common)/ },
             { name: "vendor", test: /node_modules/ },
+            { name: "sdkwork-foundation-runtime", test: /sdkwork-(?:appbase|core|utils)/ },
+            { name: "sdkwork-auth-runtime", test: /sdkwork-(?:auth|iam)/ },
           ],
         },
       },
