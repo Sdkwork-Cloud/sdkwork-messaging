@@ -1,9 +1,9 @@
 {
-  "environment": "development",
-  "deploymentProfile": "standalone",
-  "profileId": "standalone.development",
+  "environment": "production",
+  "deploymentProfile": "cloud",
+  "profileId": "cloud.production",
   "runtimeTarget": "browser",
-  "browserOriginMode": "same-origin",
+  "browserOriginMode": "cross-origin",
   "defaultLocale": "zh-CN",
   "fallbackLocale": "en-US",
   "supportedLocales": [
@@ -14,6 +14,6 @@
     "zh-CN",
     "en-US"
   ],
-  "appApiBaseUrl": "/",
-  "appbaseAppApiBaseUrl": "/"
+  "appApiBaseUrl": "https://api.sdkwork.com",
+  "appbaseAppApiBaseUrl": "https://api.sdkwork.com"
 }
