@@ -36,13 +36,13 @@ describe("NotificationCenter", () => {
     const service = createService(pageResponse(notifications));
     render(<NotificationCenter access={{ status: "authenticated", service }} locale="en-US" />);
 
-    expect(screen.getByText("Loading notifications...")).toBeInTheDocument();
+    expect(screen.getByText("Synchronizing business messages...")).toBeInTheDocument();
     expect(await screen.findByText("Production deployment completed")).toBeInTheDocument();
     expect(service.listNotifications).toHaveBeenCalledWith({ page: 1, pageSize: 20 });
 
-    fireEvent.click(await screen.findByRole("button", { name: "Mark as read" }));
+    fireEvent.click(await screen.findByRole("button", { name: "Mark as handled" }));
     await waitFor(() => expect(service.markRead).toHaveBeenCalledWith("deployment-ready"));
-    expect(await screen.findByText("0 unread on this page")).toBeInTheDocument();
+    expect(await screen.findByText("0 need action on this page")).toBeInTheDocument();
   });
 
   it("filters only the current server page without constructing local pagination", async () => {
@@ -50,14 +50,14 @@ describe("NotificationCenter", () => {
     render(<NotificationCenter access={{ status: "authenticated", service }} locale="en-US" />);
     await screen.findByText("Production deployment completed");
 
-    fireEvent.click(screen.getByRole("button", { name: "Security" }));
+    fireEvent.click(screen.getByRole("button", { name: "Security & compliance" }));
     expect(screen.queryByText("Production deployment completed")).not.toBeInTheDocument();
     expect(screen.getAllByText("Security review completed")).toHaveLength(2);
 
-    fireEvent.change(screen.getByRole("searchbox", { name: "Search notifications on the current page" }), {
+    fireEvent.change(screen.getByRole("searchbox", { name: "Search business messages on the current page" }), {
       target: { value: "no-match" },
     });
-    expect(screen.getByText("No matching notifications")).toBeInTheDocument();
+    expect(screen.getByText("No matching business messages")).toBeInTheDocument();
   });
 
   it("uses server page metadata for next-page navigation", async () => {
@@ -73,14 +73,14 @@ describe("NotificationCenter", () => {
   });
 
   it.each([
-    [{ status: 403 }, "Notification access is restricted"],
-    [new TypeError("network unavailable"), "Notification service is unavailable"],
-    [new Error("unknown"), "Notifications could not be loaded"],
+    [{ status: 403 }, "Your current role cannot view this message stream"],
+    [new TypeError("network unavailable"), "Message service cannot connect right now"],
+    [new Error("unknown"), "Messages could not be synchronized"],
   ])("renders commercial error recovery for %s", async (error, expectedTitle) => {
     const service = createService(pageResponse([]), vi.fn().mockRejectedValue(error));
     render(<NotificationCenter access={{ status: "authenticated", service }} locale="en-US" />);
     expect(await screen.findByText(expectedTitle)).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Retry" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Reconnect" })).toBeInTheDocument();
   });
 
   it("renders a public guest state without requiring a notification service", () => {
@@ -91,10 +91,10 @@ describe("NotificationCenter", () => {
       />,
     );
 
-    expect(screen.getAllByText("Public access enabled")).toHaveLength(2);
-    expect(screen.getByText("Personal data")).toBeInTheDocument();
+    expect(screen.getAllByText("Public workspace available")).toHaveLength(2);
+    expect(screen.getByText("Personal messages")).toBeInTheDocument();
     expect(screen.getByText("Not requested")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Sign in and sync notifications" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Sign in and connect private messages" })).toHaveAttribute(
       "href",
       "/auth/login?redirect=%2Fnotifications",
     );

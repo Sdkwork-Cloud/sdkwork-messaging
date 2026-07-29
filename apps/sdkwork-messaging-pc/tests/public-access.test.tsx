@@ -19,9 +19,9 @@ describe("public notification center access", () => {
       <App runtime={createRuntime({ getCurrentSession, listNotifications, loadAuthRuntimeConfig })} />,
     );
 
-    expect(await screen.findByText("通知中心已就绪")).toBeInTheDocument();
+    expect(await screen.findByText("连接你的业务通知")).toBeInTheDocument();
     await waitFor(() => expect(getCurrentSession).toHaveBeenCalledOnce());
-    expect(screen.getAllByText("公开访问已开启")).toHaveLength(2);
+    expect(screen.getAllByText("公开工作台可用")).toHaveLength(2);
     expect(screen.queryByText("身份服务暂时不可用。")).not.toBeInTheDocument();
     expect(loadAuthRuntimeConfig).not.toHaveBeenCalled();
     expect(listNotifications).not.toHaveBeenCalled();
@@ -36,7 +36,7 @@ describe("public notification center access", () => {
       <App runtime={createRuntime({ getCurrentSession, listNotifications, loadAuthRuntimeConfig })} />,
     );
 
-    expect(await screen.findByText("通知中心已就绪")).toBeInTheDocument();
+    expect(await screen.findByText("连接你的业务通知")).toBeInTheDocument();
     await waitFor(() => expect(getCurrentSession).toHaveBeenCalledOnce());
     expect(screen.queryByRole("alert")).not.toBeInTheDocument();
     expect(loadAuthRuntimeConfig).not.toHaveBeenCalled();

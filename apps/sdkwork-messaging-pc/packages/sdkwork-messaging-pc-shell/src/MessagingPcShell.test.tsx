@@ -26,11 +26,11 @@ describe("MessagingPcShell", () => {
       </SdkworkThemeProvider>,
     );
 
-    expect(screen.getByLabelText("SDKWork Notification Center")).toBeInTheDocument();
-    expect(screen.getByRole("navigation", { name: "Product navigation" })).toBeInTheDocument();
+    expect(screen.getByLabelText("SDKWork Business Notification Center")).toBeInTheDocument();
+    expect(screen.getByRole("navigation", { name: "Business message navigation" })).toBeInTheDocument();
     expect(screen.getByLabelText("Signed in as Ada Lovelace")).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Sign out" })).toBeInTheDocument();
-    expect(await screen.findByText("No notifications here")).toBeInTheDocument();
+    expect(await screen.findByText("No messages need action")).toBeInTheDocument();
   });
 
   it("keeps the notification route public and presents a guest session", () => {
@@ -45,9 +45,9 @@ describe("MessagingPcShell", () => {
       </SdkworkThemeProvider>,
     );
 
-    expect(screen.getByLabelText("Browsing as a guest")).toBeInTheDocument();
+    expect(screen.getByLabelText("Accessing through the public workspace")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Sign in" })).toHaveAttribute("href", "/auth/login?redirect=%2Fnotifications");
     expect(screen.queryByRole("button", { name: "Sign out" })).not.toBeInTheDocument();
-    expect(screen.getByText("Your notification center is ready")).toBeInTheDocument();
+    expect(screen.getByText("Connect your business notifications")).toBeInTheDocument();
   });
 });

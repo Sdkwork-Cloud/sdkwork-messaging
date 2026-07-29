@@ -5,7 +5,7 @@
     "key": "sdkwork-messaging-pc",
     "name": "SDKWork Messaging PC",
     "displayName": "SDKWork Notification Center",
-    "description": "Commercial notification center for SDKWork applications and cloud services.",
+    "description": "Business notification workspace for release progress, service risk, billing, and platform operations, with public access and protected personal streams.",
     "vendor": "SDKWork",
     "officialWebsiteUrl": "https://sdkwork.com/apps/sdkwork-messaging-pc",
     "supportUrl": "https://sdkwork.com/support",
@@ -70,4 +70,3 @@
     "deploymentConfig": "etc/sdkwork.deployment.config.json"
   }
 }
-
