@@ -1,7 +1,7 @@
 export const notificationCenterEnUs = {
   "title": "Notification center",
   "subtitle": "Release progress, service risk, and account actions",
-  "guestSubtitle": "A business notification entry point open to everyone",
+  "guestSubtitle": "Open to every user",
   "guestBadge": "Public workspace available",
   "guestPrivacyBody": "No personal message data is requested or displayed before you sign in.",
   "guestToolbarTitle": "Business notification workspace",

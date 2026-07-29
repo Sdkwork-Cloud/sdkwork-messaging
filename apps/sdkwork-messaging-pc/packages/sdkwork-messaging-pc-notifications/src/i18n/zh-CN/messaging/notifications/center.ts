@@ -1,7 +1,7 @@
 export const notificationCenterZhCn = {
   "title": "通知中心",
   "subtitle": "发布进度、服务风险与账户事项",
-  "guestSubtitle": "面向所有用户开放的业务通知入口",
+  "guestSubtitle": "所有用户均可访问",
   "guestBadge": "公开工作台可用",
   "guestPrivacyBody": "登录前不会请求或展示任何个人消息数据。",
   "guestToolbarTitle": "业务通知工作台",
