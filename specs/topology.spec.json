@@ -2,6 +2,7 @@
   "schemaVersion": 5,
   "kind": "sdkwork.app.topology",
   "appId": "sdkwork-messaging",
+  "applicationCode": "messaging",
   "archetype": "client-application",
   "profileRoot": "apps/sdkwork-messaging-pc/etc/browser",
   "profilePattern": "runtime-env.{deploymentProfile}.{environment}.json",
