@@ -11,5 +11,12 @@
   ],
   "exclude": [
     "sdks/**/generated/server-openapi"
-  ]
+  ],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "allowImportingTsExtensions": true,
+    "types": [
+      "node"
+    ]
+  }
 }

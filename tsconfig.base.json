@@ -8,28 +8,9 @@
     ],
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "baseUrl": ".",
-    "paths": {
-      "@sdkwork/messaging-runtime-bootstrap": [
-        "apps/sdkwork-messaging-common/packages/sdkwork-messaging-runtime-bootstrap/src/index.ts"
-      ],
-      "@sdkwork/messaging-contracts": [
-        "apps/sdkwork-messaging-common/packages/sdkwork-messaging-contracts/src/index.ts"
-      ],
-      "@sdkwork/messaging-sdk-ports": [
-        "apps/sdkwork-messaging-common/packages/sdkwork-messaging-sdk-ports/src/index.ts"
-      ],
-      "@sdkwork/messaging-service": [
-        "apps/sdkwork-messaging-common/packages/sdkwork-messaging-service/src/index.ts"
-      ],
-      "@sdkwork/messaging-runtime": [
-        "apps/sdkwork-messaging-common/packages/sdkwork-messaging-runtime/src/index.ts"
-      ]
-    },
     "allowImportingTsExtensions": true,
     "strict": true,
     "noEmit": true,
-    "ignoreDeprecations": "6.0",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
